@@ -25,12 +25,17 @@ vim.opt.clipboard = "unnamedplus"
 vim.cmd.colorscheme("catppuccin-macchiato")
 
 vim.diagnostic.config({
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = "",
-      [vim.diagnostic.severity.WARN] = "",
-      [vim.diagnostic.severity.HINT] = "󰌵",
-      [vim.diagnostic.severity.INFO] = "",
-    },
-  },
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.HINT] = "󰌵",
+			[vim.diagnostic.severity.INFO] = "",
+		},
+	},
 })
+
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint" })
+vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DapBreakpointCondition" })
+vim.fn.sign_define("DapBreakpointRejected", { text = "◆", texthl = "DapBreakpointRejected" })
+vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped" })
