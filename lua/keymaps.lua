@@ -1,12 +1,20 @@
 vim.api.nvim_set_keymap("n", "<leader>q", ":q<CR>", { noremap = true, silent = true, desc = "Quit" })
-vim.api.nvim_set_keymap("n", "<leader>U", ":Lazy update<CR>", { noremap = true, silent = true, desc = "Update Plugins" })
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>U",
+	":Lazy update<CR>",
+	{ noremap = true, silent = true, desc = "Update Plugins" }
+)
 
 vim.api.nvim_set_keymap("n", "<C-s>", ":w<cr>", {})
 vim.api.nvim_set_keymap("n", "<leader>w", ":w<CR>", { noremap = true, silent = true, desc = "Save" })
 
-vim.api.nvim_set_keymap("n", "<leader>h", ":set invhlsearch<cr>",
-  { noremap = true, silent = true, desc = "Toggle Hightlight" })
-
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>h",
+	":set invhlsearch<cr>",
+	{ noremap = true, silent = true, desc = "Toggle Hightlight" }
+)
 
 -- swapping lines
 vim.api.nvim_set_keymap("n", "<A-j>", ":m .+1<cr>==", {})
@@ -29,8 +37,17 @@ vim.api.nvim_set_keymap("i", "<C-l>", "<End>", {})
 -- lsp
 vim.api.nvim_set_keymap("n", "<leader>l", "<Nop>", { noremap = true, silent = true, desc = "+LSP" })
 vim.api.nvim_set_keymap(
-  "n",
-  "<leader>lr",
-  ":lua vim.lsp.buf.rename()<cr>",
-  { noremap = true, silent = true, desc = "Rename" }
+	"n",
+	"<leader>lq",
+	":lua vim.diagnostic.setloclist()<cr>",
+	{ noremap = true, silent = true, desc = "Quickfix" }
 )
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>lr",
+	":lua vim.lsp.buf.rename()<cr>",
+	{ noremap = true, silent = true, desc = "Rename" }
+)
+
+
+

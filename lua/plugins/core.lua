@@ -1,142 +1,162 @@
 return {
-  -- { "folke/tokyonight.nvim", lazy = false, priority = 1000,     opts = {} },
-  { "catppuccin/nvim",      lazy = false,      name = "catppuccin", priority = 1000 },
+	-- { "folke/tokyonight.nvim", lazy = false, priority = 1000,     opts = {} },
+	{ "catppuccin/nvim", lazy = false, name = "catppuccin", priority = 1000 },
 
-  {
-    "nvim-treesitter/nvim-treesitter",
-    name = "nvim-treesitter",
-    event = "BufEnter",
-    opts = {
-      ensure_installed = { "lua" },
-      sync_install = false,
-      highlight = { enable = true },
-      indent = { enable = true },
-    },
-  },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		name = "nvim-treesitter",
+		event = "BufEnter",
+		opts = {
+			ensure_installed = { "lua" },
+			sync_install = false,
+			highlight = { enable = true },
+			indent = { enable = true },
+		},
+	},
 
-  { "folke/which-key.nvim", event = "VeryLazy" },
+	{ "folke/which-key.nvim", event = "VeryLazy" },
 
-  {
-    "kevinhwang91/nvim-ufo",
-    event = "BufNew",
-    dependencies = { "kevinhwang91/promise-async" },
-    config = function()
-      require("ufo").setup()
-    end,
-  },
+	{
+		"numToStr/Comment.nvim",
+		lazy = true,
+		event = "BufNew",
+		opts = { toggler = { line = "<leader>/" }, opleader = { line = "<leader>/" } },
+	},
 
-  {
-    "akinsho/bufferline.nvim",
-    version = "*",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    lazy = true,
-    event = "BufNew",
-    opts = {
-      options = {
-        separator_style = "slant",
-        diagnostics = "nvim_lsp",
-        modified_icon = " ",
-        offsets = {
-          {
-            filetype = "NvimTree",
-            text = "Explorer",
-            highlight = "Directory",
-            separator = true, -- use a "true" to enable the default, or set your own character
-          },
-          {
-            filetype = "sagaoutline",
-            text = "LSP Outline",
-            separator = true, -- use a "true" to enable the default, or set your own character
-          },
-        },
-      },
-    },
-    keys = {
-      { "<leader>b",  "<Nop>",                      desc = "+Buffer" },
-      { "<leader>ba", ":BufferLineCloseOthers<cr>", desc = "Close All Buffers",   silent = true },
-      { "<leader>bl", ":BufferLineCloseRight<cr>",  desc = "Close Right Buffers", silent = true },
-      { "<leader>bh", ":BufferLineCloseLeft<cr>",   desc = "Close Left Buffers",  silent = true },
-      { "<S-h>",      ":BufferLineCyclePrev<cr>",   desc = "Prev Buffer",         silent = true },
-      { "<S-l>",      ":BufferLineCycleNext<cr>",   desc = "Next Buffer",         silent = true },
-    },
-  },
+	{
+		"kevinhwang91/nvim-ufo",
+		event = "BufNew",
+		dependencies = { "kevinhwang91/promise-async" },
+		config = function()
+			require("ufo").setup()
+		end,
+	},
 
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    lazy = true,
-    event = "BufEnter",
-    opts = {
-      options = {
-        globalstatus = true,
-        theme = "auto",
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		lazy = true,
+		event = "BufNew",
+		opts = {
+			options = {
+				separator_style = "slant",
+				diagnostics = "nvim_lsp",
+				modified_icon = " ",
+				offsets = {
+					{
+						filetype = "NvimTree",
+						text = "Explorer",
+						highlight = "Directory",
+						separator = true, -- use a "true" to enable the default, or set your own character
+					},
+					{
+						filetype = "sagaoutline",
+						text = "LSP Outline",
+						separator = true, -- use a "true" to enable the default, or set your own character
+					},
+				},
+			},
+		},
+		keys = {
+			{ "<leader>b", "<Nop>", desc = "+Buffer" },
+			{ "<leader>ba", ":BufferLineCloseOthers<cr>", desc = "Close All Buffers", silent = true },
+			{ "<leader>bl", ":BufferLineCloseRight<cr>", desc = "Close Right Buffers", silent = true },
+			{ "<leader>bh", ":BufferLineCloseLeft<cr>", desc = "Close Left Buffers", silent = true },
+			{ "<S-h>", ":BufferLineCyclePrev<cr>", desc = "Prev Buffer", silent = true },
+			{ "<S-l>", ":BufferLineCycleNext<cr>", desc = "Next Buffer", silent = true },
+		},
+	},
 
-        disabled_filetypes = {
-          statusline = { "startup", "alpha", "NvimTree", "neo-tree", "sagaoutline" },
-          winbar = { "startup", "alpha", "NvimTree", "neo-tree", "sagaoutline" },
-        },
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		lazy = true,
+		event = "BufEnter",
+		opts = {
+			options = {
+				globalstatus = true,
+				theme = "auto",
 
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
-      },
-          
+				disabled_filetypes = {
+					statusline = { "startup", "alpha", "NvimTree", "neo-tree", "sagaoutline" },
+					winbar = { "startup", "alpha", "NvimTree", "neo-tree", "sagaoutline" },
+				},
 
-      sections = {
-        lualine_a = { "mode" },
-        lualine_b = {
-          {
-            function()
-              local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
-              if #buf_clients == 0 then
-                return "LSP Inactive"
-              end
+				component_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
+			},
 
-              local buf_ft = vim.bo.filetype
-              local buf_client_names = {}
+			sections = {
+				lualine_a = { "mode" },
+				lualine_b = {
+					{
+						function()
+							local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
+							if #buf_clients == 0 then
+								return "LSP Inactive"
+							end
 
-              -- add client
-              for _, client in pairs(buf_clients) do
-                if client.name ~= "null-ls" and client.name ~= "copilot" then
-                  table.insert(buf_client_names, client.name)
-                end
-              end
+							local buf_ft = vim.bo.filetype
+							local buf_client_names = {}
 
-              local unique_client_names = table.concat(buf_client_names, ", ")
-              local language_servers = string.format("  %s", unique_client_names)
+							-- add client
+							for _, client in pairs(buf_clients) do
+								if client.name ~= "null-ls" and client.name ~= "copilot" then
+									table.insert(buf_client_names, client.name)
+								end
+							end
 
-              return language_servers
-            end,
-          },
-        },
-        lualine_c = {
-          {
-            "diagnostics",
-            source = "nvim_lsp",
-            symbols = { error = " ", warn = " ", info = " ", hint = "󰝶 " },
-          },
-        },
+							local unique_client_names = table.concat(buf_client_names, ", ")
+							local language_servers = string.format("  %s", unique_client_names)
 
-        lualine_x = {
-          { "navic" },
-          {
-            function()
-              local icon = " "
-              local status = require("copilot.api").status.data
-              return icon .. (status.message or " ")
-            end,
-            cond = function()
-              local ok, clients = pcall(vim.lsp.get_clients, { name = "copilot", bufnr = 0 })
-              return ok and #clients > 0
-            end,
-            color = { fg = "#a6da95" },
-          },
-        },
-        lualine_y = {
-          { "diff", symbols = { added = " ", modified = " ", removed = " " } },
-          { "branch", icon = "" },
-        },
-        lualine_z = { "location" },
-      },
-    },
-  },
+							return language_servers
+						end,
+					},
+				},
+				lualine_c = {
+					{
+						"diagnostics",
+						source = "nvim_lsp",
+						symbols = { error = " ", warn = " ", info = " ", hint = "󰝶 " },
+					},
+				},
+
+				lualine_x = {
+					{ "navic" },
+					{
+						function()
+							local icon = " "
+							local status = require("copilot.api").status.data
+							return icon .. (status.message or " ")
+						end,
+						cond = function()
+							local ok, clients = pcall(vim.lsp.get_clients, { name = "copilot", bufnr = 0 })
+							return ok and #clients > 0
+						end,
+						color = { fg = "#a6da95" },
+					},
+				},
+				lualine_y = {
+					{ "diff", symbols = { added = " ", modified = " ", removed = " " } },
+					{ "branch", icon = "" },
+				},
+				lualine_z = { "location" },
+			},
+		},
+	},
+
+	{
+		"christoomey/vim-tmux-navigator",
+		event = "BufEnter",
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+			"TmuxNavigatePrevious",
+			"TmuxNavigatorProcessList",
+		},
+		keys = { "<c-h>", "<c-j>", "<c-k>", "<c-l>" },
+	},
 }
