@@ -1,7 +1,7 @@
 vim.o.foldmethod = "manual"
 vim.wo.number = true
 vim.o.cursorline = true
-vim.o.signcolumn = "yes"
+-- vim.o.signcolumn = "yes"
 vim.o.ignorecase = true
 vim.o.relativenumber = false
 vim.o.showmode = false
@@ -14,10 +14,15 @@ vim.o.softtabstop = 2
 vim.o.tabstop = 2
 vim.o.termguicolors = true
 vim.o.wrap = false
+
+vim.o.foldenable = true
+vim.o.foldcolumn = "0"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99;
 -- vim.o.winborder = "rounded"
 
 vim.opt.clipboard = "unnamedplus"
-vim.cmd.colorscheme("tokyonight")
+vim.cmd.colorscheme("catppuccin-macchiato")
 
 vim.diagnostic.config({
   signs = {
