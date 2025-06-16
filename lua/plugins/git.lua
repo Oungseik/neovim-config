@@ -5,16 +5,14 @@ return {
     lazy = true,
     name = "gitsigns",
     event = "BufEnter",
-    config = function()
-      require("gitsigns").setup({
+    opts = {
         trouble = false,
         current_line_blame = false,
         signs = {
           delete = { text = "" },
           topdelete = { text = "" },
         },
-      })
-    end,
+    },
     keys = {
       { "<leader>g",  "<Nop>",                              desc = "+Git" },
       { "<leader>gj", ":Gitsigns nav_hunk next<cr>",        desc = "Next Hunk",    silent = true },

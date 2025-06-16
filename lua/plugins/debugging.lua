@@ -1,17 +1,63 @@
 return {
+  {
+    "rcarriga/nvim-dap-ui",
+    lazy = true,
+    opts = {
+      layouts = {
+        {
+          elements = {
+            {
+              id = "scopes",
+              size = 0.25,
+            },
+            {
+              id = "breakpoints",
+              size = 0.25,
+            },
+            {
+              id = "stacks",
+              size = 0.25,
+            },
+            {
+              id = "watches",
+              size = 0.25,
+            },
+          },
+          position = "right",
+          size = 70,
+        },
+        {
+          elements = {
+            {
+              id = "repl",
+              size = 0.5,
+            },
+            {
+              id = "console",
+              size = 0.5,
+            },
+          },
+          position = "bottom",
+          size = 10,
+        },
+      },
+    }
+  },
+  {
+    "leoluz/nvim-dap-go",
+    lazy = true,
+    ft = "go"
+  },
 	{
 		"mfussenegger/nvim-dap",
 		lazy = true,
 		dependencies = {
-			"rcarriga/nvim-dap-ui",
-			"leoluz/nvim-dap-go",
 			"nvim-neotest/nvim-nio",
 		},
 
 		config = function()
 			local dap, dapui = require("dap"), require("dapui")
 
-			dapui.setup()
 			require("dap-go").setup({})
 			dap.set_log_level("TRACE")
 
@@ -113,6 +159,11 @@ return {
 				desc = "Continue",
 			},
 			{
+				"<leader>dt",
+				function() require('dap').terminate() end,
+				desc = "Terminate",
+			},
+			{
 				"<leader>dB",
 				function()
 					require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
@@ -131,14 +182,28 @@ return {
 				function()
 					require("dapui").float_element("scopes", { enter = true })
 				end,
-				desc = "Open Locals Float Window",
+				desc = "Locals Float Window",
 			},
 			{
 				"<leader>de",
 				function()
 					require("dapui").float_element("watches", { enter = true })
 				end,
-				desc = "Open Expressions Float Window",
+				desc = "Expressions Float Window",
+			},
+			{
+				"<leader>dL",
+				function()
+          require('dapui').float_element('breakpoints', { enter = true })
+				end,
+				desc = "Breakpoints Float Window",
+			},
+			{
+				"<leader>ds",
+				function()
+          require('dapui').float_element('stacks', { enter = true })
+				end,
+				desc = "Stacks Float Window",
 			},
 		},
 	},
