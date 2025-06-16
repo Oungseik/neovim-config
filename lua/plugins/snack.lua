@@ -40,7 +40,79 @@ return {
       function()
         Snacks.explorer.open({ layout = { layout = { position = "right" } } })
       end,
-      desc = "Find Files",
+      desc = "Explorer",
+      mode = "n",
+    },
+    {
+      "<leader>f",
+      function()
+        Snacks.picker.files()
+      end,
+      desc = "Search Files",
+      mode = "n",
+    },
+    {
+      "<leader>;",
+      function()
+        Snacks.dashboard()
+      end,
+      desc = "Dashboard",
+      mode = "n",
+    },
+
+
+    {
+      "<leader>s",
+      "<Nop>",
+      desc = "+Search",
+      mode = "n",
+    },
+    {
+      "<leader>sb",
+      function()
+        Snacks.picker.buffers()
+      end,
+      desc = "Search Buffers",
+      mode = "n",
+    },
+    {
+      "<leader>sc",
+      function()
+        Snacks.picker.commands()
+      end,
+      desc = "Search Commands",
+      mode = "n",
+    },
+    {
+      "<leader>sd",
+      function()
+        Snacks.picker.diagnostics()
+      end,
+      desc = "Search Diagnostics",
+      mode = "n",
+    },
+    {
+      "<leader>sf",
+      function()
+        Snacks.picker.files()
+      end,
+      desc = "Search Files",
+      mode = "n",
+    },
+    {
+      "<leader>sg",
+      function()
+        Snacks.picker.git_status()
+      end,
+      desc = "Search Git Status",
+      mode = "n",
+    },
+    {
+      "<leader>st",
+      function()
+        Snacks.picker.grep()
+      end,
+      desc = "Search text",
       mode = "n",
     },
   },
