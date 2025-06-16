@@ -11,6 +11,6 @@ return {
   keys = {
     { "<M-3>", "<Cmd>ToggleTerm name=Floating_Terminal<CR>", desc = "Toggle Term" },
     { "<M-3>", "<Cmd>ToggleTerm name=Floating_Terminal<CR>", mode = "i",          desc = "Toggle Term" },
-    { "<M-3>", "<Cmd>ToggleTerm<CR>", mode = "t",          desc = "Toggle Term" },
+    { "<M-3>", "<Cmd>ToggleTerm<CR>",                        mode = "t",          desc = "Toggle Term" },
   },
 }
