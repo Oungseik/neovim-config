@@ -57,6 +57,12 @@ return {
         },
         ft = { "markdown", "Avante" },
       },
+      {
+        "ravitemer/mcphub.nvim",
+      }
     },
+    config = function()
+      require("mcphub").setup()
+    end,
   },
 }
