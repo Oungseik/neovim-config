@@ -1,0 +1,31 @@
+vim.o.foldmethod = "manual"
+vim.wo.number = true
+vim.o.cursorline = true
+vim.o.signcolumn = "yes"
+vim.o.ignorecase = true
+vim.o.relativenumber = false
+vim.o.showmode = false
+vim.o.breakindent = true
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.showtabline = 2
+vim.o.smartindent = true
+vim.o.softtabstop = 2
+vim.o.tabstop = 2
+vim.o.termguicolors = true
+vim.o.wrap = false
+-- vim.o.winborder = "rounded"
+
+vim.opt.clipboard = "unnamedplus"
+vim.cmd.colorscheme("tokyonight")
+
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.HINT] = "󰌵",
+      [vim.diagnostic.severity.INFO] = "",
+    },
+  },
+})
