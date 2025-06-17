@@ -5,13 +5,14 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     name = "nvim-treesitter",
-    event = "BufEnter",
-    opts = {
-      ensure_installed = { "lua", "hurl", "rust", "javascript", "typescript" },
-      sync_install = false,
-      highlight = { enable = true },
-      indent = { enable = true },
-    },
+    config = function()
+      require"nvim-treesitter.configs".setup({
+          ensure_installed = { "lua", "hurl", "rust", "javascript", "typescript" },
+          highlight = { enable = true },
+          indent = { enable = true },
+          sync_install = false,
+      })
+    end,
   },
 
   { "folke/which-key.nvim", event = "VeryLazy" },
