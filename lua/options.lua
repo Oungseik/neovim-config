@@ -25,17 +25,31 @@ vim.opt.clipboard = "unnamedplus"
 vim.cmd.colorscheme("catppuccin-macchiato")
 
 vim.diagnostic.config({
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = "",
-			[vim.diagnostic.severity.WARN] = "",
-			[vim.diagnostic.severity.HINT] = "󰌵",
-			[vim.diagnostic.severity.INFO] = "",
-		},
-	},
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.HINT] = "󰌵",
+      [vim.diagnostic.severity.INFO] = "",
+    },
+  },
 })
 
 vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint" })
 vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DapBreakpointCondition" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "◆", texthl = "DapBreakpointRejected" })
 vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped" })
+
+-- auto-reload files when modified externally
+-- https://unix.stackexchange.com/a/383044
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "json",
+  callback = function()
+    vim.bo.formatexpr = "v:lua.require'conform'.formatexpr()"
+  end,
+})

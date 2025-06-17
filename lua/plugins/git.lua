@@ -1,17 +1,16 @@
 return {
-  { "akinsho/git-conflict.nvim", version = "*", event = "BufEnter", config = true },
   {
     "lewis6991/gitsigns.nvim",
     lazy = true,
     name = "gitsigns",
     event = "BufEnter",
     opts = {
-        trouble = false,
-        current_line_blame = false,
-        signs = {
-          delete = { text = "" },
-          topdelete = { text = "" },
-        },
+      trouble = false,
+      current_line_blame = false,
+      signs = {
+        delete = { text = "" },
+        topdelete = { text = "" },
+      },
     },
     keys = {
       { "<leader>g",  "<Nop>",                              desc = "+Git" },
@@ -25,7 +24,24 @@ return {
       { "<leader>gs", ":Gitsigns stage_hunk<cr>",           desc = "Stage Hunk",   silent = true },
       { "<leader>gS", ":Gitsigns stage_buffer<cr>",         desc = "Stage Buffer", silent = true },
       { "<leader>gu", ":Gitsigns undo_stage_hunk<cr>",      desc = "Unstage Hunk", silent = true },
-      { "<leader>gd", ":Gitsigns diffthis<cr>",             desc = "Diff",         silent = true },
     },
   },
+  {
+    "sindrets/diffview.nvim",
+    keys = {
+      { "<leader>gd", ":DiffviewClose<cr>", desc = "Diff Close", silent = true },
+      { "<leader>gD", ":DiffviewOpen<cr>",  desc = "Diff Open",  silent = true },
+    },
+  },
+  {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    event = "BufEnter",
+    config = true,
+    keys = {
+      { "<leader>gn", ":GitConflictNextConflict<cr>", desc = "Next Conflict", silent = true },
+      { "<leader>gp", ":GitConflictPrevConflict<cr>", desc = "Prev Conflict", silent = true },
+    },
+  },
+  { "NeogitOrg/neogit", dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" } }
 }
