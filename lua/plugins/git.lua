@@ -43,5 +43,14 @@ return {
       { "<leader>gp", ":GitConflictPrevConflict<cr>", desc = "Prev Conflict", silent = true },
     },
   },
-  { "NeogitOrg/neogit", dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" } }
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+    },
+    keys = {
+      { "<leader>gN", ":Neogit<cr>", desc = "Neogit", silent = true },
+    },
+  },
 }
