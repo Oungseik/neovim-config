@@ -44,6 +44,12 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
 	"n",
+	"<leader>la",
+	":lua vim.lsp.buf.code_action()<cr>",
+	{ noremap = true, silent = true, desc = "Action" }
+)
+vim.api.nvim_set_keymap(
+	"n",
 	"<leader>lr",
 	":lua vim.lsp.buf.rename()<cr>",
 	{ noremap = true, silent = true, desc = "Rename" }

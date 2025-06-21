@@ -5,6 +5,9 @@ return {
       vim.lsp.enable("ts_ls")
       vim.lsp.enable("lua_ls")
       vim.lsp.enable("prismals")
+      vim.lsp.enable("jsonls")
+      vim.lsp.enable("nil_ls")
+      vim.lsp.enable("gopls")
     end,
   },
 

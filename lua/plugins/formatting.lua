@@ -6,6 +6,19 @@ return {
 		opts = {
 			notify_on_error = true,
 
+			formatters = {
+				biome = {
+					meta = {
+						url = "https://github.com/biomejs/biome",
+						description = "A toolchain for web projects, aimed to provide functionalities to maintain them.",
+					},
+					command = "biome",
+					stdin = false,
+					stdout = false,
+					args = { "check", "--write", "$FILENAME" },
+				},
+			},
+
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "isort", "black" },
@@ -13,11 +26,11 @@ return {
 				go = { "gofmt" },
 				nix = { "nixfmt" },
 
-				javascript = { "prettier", "biome", "deno-fmt", stop_after_first = true },
-				typescript = { "prettier", "biome", "deno-fmt", stop_after_first = true },
-				javascriptreact = { "prettier", "biome", "deno-fmt", stop_after_first = true },
-				typescriptreact = { "prettier", "biome", "deno-fmt", stop_after_first = true },
-				json = { "prettier", "biome", "deno-fmt", stop_after_first = true },
+				javascript = { "biome", "deno-fmt", "prettier", stop_after_first = true },
+				typescript = { "biome", "deno-fmt", "prettier", stop_after_first = true },
+				javascriptreact = { "biome", "deno-fmt", "prettier", stop_after_first = true },
+				typescriptreact = { "biome", "deno-fmt", "prettier", stop_after_first = true },
+				json = { "biome", "deno-fmt", "prettier", stop_after_first = true },
 				astro = { "prettier", "biome", "deno-fmt", stop_after_first = true },
 				svelte = { "prettier", "biome", "deno-fmt", stop_after_first = true },
 			},
