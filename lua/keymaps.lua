@@ -61,5 +61,9 @@ vim.api.nvim_set_keymap(
 	{ noremap = true, silent = true, desc = "Rename" }
 )
 
-
-
+vim.api.nvim_set_keymap(
+	"n",
+	"K",
+	"<cmd>lua vim.lsp.buf.hover({ border = 'rounded' })<cr>",
+	{ noremap = true, silent = true, desc = "Hover" }
+)
