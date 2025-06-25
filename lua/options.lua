@@ -14,6 +14,8 @@ vim.o.softtabstop = 2
 vim.o.tabstop = 2
 vim.o.termguicolors = true
 vim.o.wrap = false
+vim.o.splitbelow = true
+vim.o.splitright = true
 
 vim.o.foldenable = true
 vim.o.foldcolumn = "0"
