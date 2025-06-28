@@ -58,6 +58,9 @@ return {
 				config = function()
 					require("mcphub").setup()
 				end,
+				keys = {
+					{ "<leader>am", ":MCPHub<cr>", desc = "MCP Hub" },
+				},
 			},
 		},
 		keys = {
