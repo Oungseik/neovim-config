@@ -2,7 +2,7 @@ return {
 	{
 		"saghen/blink.cmp",
 		dependencies = { "rafamadriz/friendly-snippets" },
-		build = "cargo build --release", -- for delimiters
+    build = 'nix run --accept-flake-config .#build-plugin',
 
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config

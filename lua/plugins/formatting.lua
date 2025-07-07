@@ -5,6 +5,7 @@ return {
 		event = "InsertEnter",
 		opts = {
 			notify_on_error = true,
+      timeout_ms = 1000,
 
 			formatters = {
 				biome = {
@@ -20,9 +21,10 @@ return {
 			},
 
 			formatters_by_ft = {
+				rust = { "rustfmt", lsp_format = "fallback", stop_after_first = true },
+				toml = { lsp_format = "fallback", stop_after_first = true },
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				rust = { "rustfmt", lsp_format = "fallback", stop_after_first = true },
 				go = { "gofmt" },
 				nix = { "nixfmt" },
 

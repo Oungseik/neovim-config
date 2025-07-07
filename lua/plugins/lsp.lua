@@ -25,6 +25,8 @@ return {
 			vim.lsp.enable("jsonls")
 			vim.lsp.enable("nil_ls")
 			vim.lsp.enable("gopls")
+			vim.lsp.enable("tombi")
+      vim.lsp.enable("svelte")
 		end,
 	},
 
