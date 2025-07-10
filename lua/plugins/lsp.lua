@@ -19,6 +19,23 @@ return {
 			},
 		},
 		config = function()
+			local lspconfig = require("lspconfig")
+
+			lspconfig.lua_ls.setup({
+				settings = {
+					Lua = {
+						runtime = { version = "LuaJIT" },
+						diagnostics = {
+							globals = { "vim", "require" },
+						},
+						workspace = {
+							library = vim.api.nvim_get_runtime_file("", true),
+						},
+						telemetry = { enable = false },
+					},
+				},
+			})
+
 			vim.lsp.enable("ts_ls")
 			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("prismals")
@@ -26,7 +43,7 @@ return {
 			vim.lsp.enable("nil_ls")
 			vim.lsp.enable("gopls")
 			vim.lsp.enable("tombi")
-      vim.lsp.enable("svelte")
+			vim.lsp.enable("svelte")
 		end,
 	},
 

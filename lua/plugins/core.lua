@@ -75,7 +75,7 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = true,
-    event = "BufEnter",
+    event = "BufNew",
     opts = {
       options = {
         globalstatus = true,
@@ -100,7 +100,6 @@ return {
                 return "LSP Inactive"
               end
 
-              local buf_ft = vim.bo.filetype
               local buf_client_names = {}
 
               -- add client

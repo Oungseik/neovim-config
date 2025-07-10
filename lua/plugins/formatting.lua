@@ -34,7 +34,7 @@ return {
 				typescriptreact = { "biome", "deno-fmt", "prettier", stop_after_first = true },
 				json = { "biome", "deno-fmt", "prettier", stop_after_first = true },
 				astro = { "prettier", "biome", "deno-fmt", stop_after_first = true },
-				svelte = { "prettier", "biome", "deno-fmt", stop_after_first = true },
+				svelte = { "prettier", "biome", "deno-fmt", stop_after_first = true, timeout_ms = 5000 },
 			},
 		},
 		keys = {
