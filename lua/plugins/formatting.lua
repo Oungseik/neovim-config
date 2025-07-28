@@ -5,7 +5,7 @@ return {
 		event = "InsertEnter",
 		opts = {
 			notify_on_error = true,
-      timeout_ms = 1000,
+			timeout_ms = 1000,
 
 			formatters = {
 				biome = {
@@ -17,6 +17,15 @@ return {
 					stdin = false,
 					stdout = false,
 					args = { "check", "--write", "$FILENAME" },
+				},
+				scheme = {
+					meta = {
+						url = "https://github.com/raviqqe/schemat",
+						description = "Code formatter for Scheme, Lisp, and any S-expressions ",
+					},
+					command = "schemat",
+					stdin = true,
+					stdout = true,
 				},
 			},
 
@@ -35,6 +44,9 @@ return {
 				json = { "biome", "deno-fmt", "prettier", stop_after_first = true },
 				astro = { "prettier", "biome", "deno-fmt", stop_after_first = true },
 				svelte = { "prettier", "biome", "deno-fmt", stop_after_first = true, timeout_ms = 5000 },
+
+				scheme = { "scheme" },
+				sql = { "sleek" },
 			},
 		},
 		keys = {
