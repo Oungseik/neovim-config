@@ -37,6 +37,8 @@ return {
 				go = { "gofmt" },
 				nix = { "nixfmt" },
 
+				html = { "biome", "prettier", stop_after_first = true },
+				css = { "biome", "prettier", stop_after_first = true },
 				javascript = { "biome", "deno-fmt", "prettier", stop_after_first = true },
 				typescript = { "biome", "deno-fmt", "prettier", stop_after_first = true },
 				javascriptreact = { "biome", "deno-fmt", "prettier", stop_after_first = true },
