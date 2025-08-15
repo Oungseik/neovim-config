@@ -18,7 +18,7 @@ return {
       { "<leader>gk", ":Gitsigns nav_hunk prev<cr>",        desc = "Prev Hunk",    silent = true },
       { "<leader>gl", ":Gitsigns blame_line<cr>",           desc = "Blame",        silent = true },
       { "<leader>gL", ":Gitsigns blame_line full=true<cr>", desc = "Blame (full)", silent = true },
-      { "<leader>gp", ":Gitsigns preview_hunk<cr>",         desc = "Preview",      silent = true },
+      { "<leader>gP", ":Gitsigns preview_hunk<cr>",         desc = "Preview",      silent = true },
       { "<leader>gr", ":Gitsigns reset_hunk<cr>",           desc = "Reset Hunk",   silent = true },
       { "<leader>gR", ":Gitsigns reset_buffer<cr>",         desc = "Reset Buffer", silent = true },
       { "<leader>gs", ":Gitsigns stage_hunk<cr>",           desc = "Stage Hunk",   silent = true },
@@ -41,6 +41,7 @@ return {
     keys = {
       { "<leader>gn", ":GitConflictNextConflict<cr>", desc = "Next Conflict", silent = true },
       { "<leader>gp", ":GitConflictPrevConflict<cr>", desc = "Prev Conflict", silent = true },
+      { "<leader>gq", ":GitConflictListQf<cr>", desc = "Conflicts Quickfix", silent = true },
     },
   },
   {
