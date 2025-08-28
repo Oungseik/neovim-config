@@ -37,6 +37,7 @@ return {
 			})
 
 			vim.lsp.enable("ts_ls")
+			-- vim.lsp.enable("tsgo")
 			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("prismals")
 			vim.lsp.enable("jsonls")

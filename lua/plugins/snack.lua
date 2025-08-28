@@ -11,7 +11,7 @@ return {
 		dashboard = { enabled = true },
 		explorer = { enabled = true },
 		indent = { enabled = false },
-		input = { enabled = true },
+		-- input = { enabled = true },
 		picker = { enabled = true },
 		notifier = { enabled = true },
 		quickfile = { enabled = true },
