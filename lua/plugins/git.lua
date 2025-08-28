@@ -4,7 +4,6 @@ return {
     lazy = true,
     name = "gitsigns",
     event = "BufEnter",
-    version = "1.0.2",
     opts = {
       trouble = false,
       current_line_blame = false,

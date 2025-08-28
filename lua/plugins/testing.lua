@@ -34,6 +34,7 @@ return {
 				desc = "+Tests",
 				silent = true,
 			},
+			{ "<leader>ta", ":lua require('neotest').run.attach()<cr>", desc = "Attach Test", silent = true },
 			{
 				"<leader>td",
 				":lua require('neotest').run.run({strategy = 'dap'})<cr>",
@@ -47,7 +48,7 @@ return {
 				silent = true,
 			},
 			{ "<leader>tp", ":Neotest output-panel<cr>", desc = "Output Panel", silent = true },
-			{ "<leader>tr", ":lua require('neotest').run.run()<cr>", desc = "Run Test", silent = true },
+			{ "<leader>tt", ":lua require('neotest').run.run()<cr>", desc = "Run Test", silent = true },
 			{ "<leader>ts", ":lua require('neotest').run.stop()<cr>", desc = "Stop", silent = true },
 			{
 				"<leader>tS",
