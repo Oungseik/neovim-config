@@ -17,7 +17,7 @@ return {
 					require("rustaceanvim.neotest"),
 					require("neotest-golang"),
 					require("neotest-vitest"),
-					require("neotest-bun"),
+					-- require("neotest-bun"),
 					-- require("neotest-playwright").adapter({
 					--   options = {
 					--     persist_project_selection = true,
@@ -49,9 +49,9 @@ return {
 			},
 			{ "<leader>tp", ":Neotest output-panel<cr>", desc = "Output Panel", silent = true },
 			{ "<leader>tt", ":lua require('neotest').run.run()<cr>", desc = "Run Test", silent = true },
-			{ "<leader>ts", ":lua require('neotest').run.stop()<cr>", desc = "Stop", silent = true },
+			{ "<leader>tS", ":lua require('neotest').run.stop()<cr>", desc = "Stop", silent = true },
 			{
-				"<leader>tS",
+				"<leader>ts",
 				":lua require('neotest').summary.toggle()<cr>",
 				desc = "Summary",
 				silent = true,
