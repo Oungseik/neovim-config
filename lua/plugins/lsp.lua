@@ -45,6 +45,9 @@ return {
 			vim.lsp.enable("gopls")
 			vim.lsp.enable("tombi")
 			vim.lsp.enable("svelte")
+
+      vim.lsp.enable("ruff")
+      vim.lsp.enable("ty")
 		end,
 	},
 

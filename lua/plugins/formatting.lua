@@ -18,6 +18,7 @@ return {
 					stdout = false,
 					args = { "check", "--write", "$FILENAME" },
 				},
+
 				scheme = {
 					meta = {
 						url = "https://github.com/raviqqe/schemat",
@@ -33,7 +34,7 @@ return {
 				rust = { "rustfmt", lsp_format = "fallback", stop_after_first = true },
 				toml = { lsp_format = "fallback", stop_after_first = true },
 				lua = { "stylua" },
-				python = { "isort", "black" },
+				python = { "ruff_format" },
 				go = { "gofmt" },
 				nix = { "nixfmt" },
 
