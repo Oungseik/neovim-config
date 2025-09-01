@@ -78,6 +78,14 @@ return {
 			mode = "n",
 		},
 		{
+			"<leader>bs",
+			function()
+				Snacks.picker.buffers()
+			end,
+			desc = "Buffers Search",
+			mode = "n",
+		},
+		{
 			"<leader>sc",
 			function()
 				Snacks.picker.commands()
@@ -99,6 +107,14 @@ return {
 				Snacks.picker.files()
 			end,
 			desc = "Search Files",
+			mode = "n",
+		},
+		{
+			"<leader>lR",
+			function()
+				Snacks.picker.lsp_references()
+			end,
+			desc = "LSP References",
 			mode = "n",
 		},
 		{
