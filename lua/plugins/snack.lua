@@ -118,6 +118,14 @@ return {
 			mode = "n",
 		},
 		{
+			"<leader>li",
+			function()
+				Snacks.picker.lsp_implementations()
+			end,
+			desc = "LSP Implementation",
+			mode = "n",
+		},
+		{
 			"<leader>sg",
 			function()
 				Snacks.picker.git_status()
