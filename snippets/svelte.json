@@ -1,0 +1,50 @@
+{
+  "svelte tanstack email input": {
+    "prefix": "sv-email-input",
+    "body": [
+      "<form.Field",
+      " name=\"email\"",
+      " validators={{ onChange: ({ value }) => z.email().safeParse(value).error?.issues?.at(0)?.message }}",
+      ">",
+      " {#snippet children(field)}",
+      "   <div class=\"space-y-2\">",
+      "     <Label for={field.name}>Email</Label>",
+      "     <Input",
+      "       id={field.name}",
+      "       name={field.name}",
+      "       value={field.state.value}",
+      "       type=\"email\"",
+      "       onblur={field.handleBlur}",
+      "       onchange={(e) => field.handleChange(e.currentTarget.value)}",
+      "       placeholder=\"m@example.com\"",
+      "       required",
+      "     />",
+      "   </div>",
+      " {/snippet}",
+      "</form.Field>"
+    ]
+  },
+
+  "svelte tanstack text input": {
+    "prefix": "sv-input",
+    "body": [
+      "<form.Field name=\"$1\">",
+      " {#snippet children(field)}",
+      "   <div class=\"space-y-2\">",
+      "     <Label for={field.name}>$2</Label>",
+      "     <Input",
+      "       id={field.name}",
+      "       name={field.name}",
+      "       value={field.state.value}",
+      "       type=\"$3\"",
+      "       onblur={field.handleBlur}",
+      "       onchange={(e) => field.handleChange(e.currentTarget.value)}",
+      "       placeholder=\"$4\"",
+      "       required",
+      "     />",
+      "   </div>",
+      " {/snippet}",
+      "</form.Field>"
+    ]
+  }
+}

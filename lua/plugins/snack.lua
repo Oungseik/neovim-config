@@ -29,7 +29,7 @@ return {
 				-- patterns to match Git signs
 				patterns = { "GitSign", "MiniDiffSign" },
 			},
-			refresh = 50, -- refresh at most every 50ms
+			refresh = 200, -- refresh at most every 50ms
 		},
 		words = { enabled = true },
 	},
