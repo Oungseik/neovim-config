@@ -47,7 +47,8 @@ return {
 				desc = "Run Test File",
 				silent = true,
 			},
-			{ "<leader>tp", ":Neotest output-panel<cr>", desc = "Output Panel", silent = true },
+			{ "<leader>to", ":Neotest output-panel<cr>", desc = "Output Panel", silent = true },
+			{ "<leader>tO", ":lua require('neotest').output_panel.clear()<cr>", desc = "Clear Output Panel", silent = true },
 			{ "<leader>tt", ":lua require('neotest').run.run()<cr>", desc = "Run Test", silent = true },
 			{ "<leader>tS", ":lua require('neotest').run.stop()<cr>", desc = "Stop", silent = true },
 			{

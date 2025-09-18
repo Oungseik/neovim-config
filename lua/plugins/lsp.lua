@@ -10,6 +10,9 @@ return {
 					{ "<leader>lo", "<cmd>Outline<CR>", desc = "Toggle outline" },
 				},
 				opts = {
+					outline_window = {
+						auto_close = true,
+					},
 					symbols = {
 						icons = {
 							Function = { icon = "󰊕", hl = "Function" },
@@ -19,9 +22,7 @@ return {
 			},
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
-
-			lspconfig.lua_ls.setup({
+			vim.lsp.config.lua_ls = {
 				settings = {
 					Lua = {
 						runtime = { version = "LuaJIT" },
@@ -34,7 +35,7 @@ return {
 						telemetry = { enable = false },
 					},
 				},
-			})
+			}
 
 			vim.lsp.enable("ts_ls")
 			-- vim.lsp.enable("tsgo")
@@ -46,8 +47,8 @@ return {
 			vim.lsp.enable("tombi")
 			vim.lsp.enable("svelte")
 
-      vim.lsp.enable("ruff")
-      vim.lsp.enable("ty")
+			vim.lsp.enable("ruff")
+			vim.lsp.enable("ty")
 		end,
 	},
 
