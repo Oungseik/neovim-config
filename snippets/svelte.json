@@ -1,5 +1,5 @@
 {
-  "svelte tanstack email input": {
+  "svelte email input with ShadCN and @tanstack/svelte-form": {
     "prefix": "sv-email-input",
     "body": [
       "<form.Field",
@@ -25,7 +25,7 @@
     ]
   },
 
-  "svelte tanstack text input": {
+  "svelte text input with ShadCN and @tanstack/svelte-form": {
     "prefix": "sv-input",
     "body": [
       "<form.Field name=\"$1\">",
@@ -44,6 +44,35 @@
       "     />",
       "   </div>",
       " {/snippet}",
+      "</form.Field>"
+    ]
+  },
+
+  "svelte select with ShadCN and @tanstack/svelte-form": {
+    "prefix": "sv-select",
+    "body": [
+      "<form.Field name=\"$1\">",
+      "  {#snippet children(field)}",
+      "    <div class=\"space-y-2\">",
+      "      <Label for={field.name}>$2</Label>",
+      "      <Select.Root",
+      "        type=\"$3\"",
+      "        name={field.name}",
+      "        value={field.state.value}",
+      "        onValueChange={(value) => {",
+      "          field.handleChange($4);",
+      "        }}",
+      "      >",
+      "        <Select.Trigger class=\"w-full\">$5</Select.Trigger>",
+      "        <Select.Content>",
+      "          <Select.Group>",
+      "            <Select.Label>$6</Select.Label>",
+      "              <Select.Item value={$7}>{$8}</Select.Item>",
+      "          </Select.Group>",
+      "        </Select.Content>",
+      "      </Select.Root>",
+      "    </div>",
+      "  {/snippet}",
       "</form.Field>"
     ]
   }
