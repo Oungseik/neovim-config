@@ -1,7 +1,7 @@
 return {
 	-- { "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
 	{ "folke/tokyonight.nvim", lazy = false, priority = 1000 },
-	{ "catppuccin/nvim", lazy = false, name = "catppuccin" },
+	-- { "catppuccin/nvim", lazy = false, name = "catppuccin" },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		name = "nvim-treesitter",

@@ -16,6 +16,10 @@ return {
   },
   ft = "hurl",
   opts = {
+    env_file = {
+      ".env",
+      "hurl.env",
+    },
     -- Show debugging info
     debug = true,
     -- Show notification on run

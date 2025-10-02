@@ -22,7 +22,7 @@ vim.o.foldenable = true
 vim.o.foldcolumn = "0"
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
--- vim.o.winborder = "rounded"
+vim.o.winborder = "rounded"
 
 -- vim.opt.clipboard = "unnamedplus"
 vim.cmd.colorscheme("tokyonight-moon")

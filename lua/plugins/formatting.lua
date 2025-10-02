@@ -37,6 +37,7 @@ return {
 				python = { "ruff_format" },
 				go = { "gofmt" },
 				nix = { "nixfmt" },
+				hurl = { "hurlfmt" },
 
 				html = { "biome", "prettier", stop_after_first = true },
 				css = { "biome", "prettier", stop_after_first = true },
