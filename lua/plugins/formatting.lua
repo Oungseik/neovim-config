@@ -46,6 +46,7 @@ return {
 				javascriptreact = { "biome", "deno-fmt", "prettier", stop_after_first = true },
 				typescriptreact = { "biome", "deno-fmt", "prettier", stop_after_first = true },
 				json = { "biome", "deno-fmt", "prettier", stop_after_first = true },
+				jsonc = { "biome", "deno-fmt", "prettier", stop_after_first = true },
 				astro = { "prettier", "biome", "deno-fmt", stop_after_first = true },
 				svelte = { "prettier", "biome", "deno-fmt", stop_after_first = true, timeout_ms = 5000 },
 
@@ -55,6 +56,7 @@ return {
 		},
 		keys = {
 			{ "<leader>lf", ":lua require('conform').format()<cr>", desc = "Format", silent = true },
+			{ "<leader>lfj", ":%!jq . <cr>", desc = "Format json", silent = false, mode = "v" },
 		},
 	},
 }
