@@ -71,43 +71,6 @@ return {
 					}
 				end,
 			},
-			{
-				"saghen/blink.cmp",
-				lazy = true,
-				dependencies = {
-					"Kaiser-Yang/blink-cmp-avante",
-				},
-				opts = {
-					sources = {
-						default = { "avante", "avante_commands", "avante_mentions", "avante_files" },
-						providers = {
-							avante = {
-								module = "blink-cmp-avante",
-								name = "Avante",
-								opts = {},
-							},
-							avante_commands = {
-								name = "avante_commands",
-								module = "blink.compat.source",
-								score_offset = 90, -- show at a higher priority than lsp
-								opts = {},
-							},
-							avante_files = {
-								name = "avante_commands",
-								module = "blink.compat.source",
-								score_offset = 100, -- show at a higher priority than lsp
-								opts = {},
-							},
-							avante_mentions = {
-								name = "avante_mentions",
-								module = "blink.compat.source",
-								score_offset = 1000, -- show at a higher priority than lsp
-								opts = {},
-							},
-						},
-					},
-				},
-			},
 		},
 		keys = {
 			{ "<leader>a", "<Nop>", desc = "+Avante" },

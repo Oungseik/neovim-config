@@ -56,7 +56,7 @@ return {
 		},
 		keys = {
 			{ "<leader>lf", ":lua require('conform').format()<cr>", desc = "Format", silent = true },
-			{ "<leader>lfj", ":%!jq . <cr>", desc = "Format json", silent = false, mode = "v" },
+			-- { "<leader>lfj", ":%!jq . <cr>", desc = "Format json", silent = false, mode = "v" },
 		},
 	},
 }
