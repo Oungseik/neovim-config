@@ -6,14 +6,15 @@ return {
 		---@module 'avante'
 		---@type avante.Config
 		opts = {
-			provider = "copilot",
+			instructions_file = "AGENTS.md",
+			provider = "gemini",
 			auto_suggestions_provider = "copilot",
 			providers = {
 				copilot = { model = "gpt-4.1-2025-04-14" },
 				gemini = {
 					endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
 					api_key_name = "GEMINI_API_KEY",
-					model = "gemini-2.5-flash-preview-05-20",
+					model = "gemini-2.5-flash-preview-09-2025",
 					timeout = 30000, -- Timeout in milliseconds
 					temperature = 0,
 					max_tokens = 8192,
@@ -59,18 +60,18 @@ return {
 					{ "<leader>am", ":MCPHub<cr>", desc = "MCP Hub" },
 				},
 			},
-			{
-				"saghen/blink.compat",
-				lazy = true,
-				opts = {},
-				config = function()
-					-- monkeypatch cmp.ConfirmBehavior for Avante
-					require("cmp").ConfirmBehavior = {
-						Insert = "insert",
-						Replace = "replace",
-					}
-				end,
-			},
+			-- {
+			-- 	"saghen/blink.compat",
+			-- 	lazy = true,
+			-- 	opts = {},
+			-- 	config = function()
+			-- 		-- monkeypatch cmp.ConfirmBehavior for Avante
+			-- 		require("cmp").ConfirmBehavior = {
+			-- 			Insert = "insert",
+			-- 			Replace = "replace",
+			-- 		}
+			-- 	end,
+			-- },
 		},
 		keys = {
 			{ "<leader>a", "<Nop>", desc = "+Avante" },
