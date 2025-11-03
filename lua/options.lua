@@ -56,3 +56,9 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.bo.formatexpr = "v:lua.require'conform'.formatexpr()"
 	end,
 })
+
+vim.filetype.add({
+	extension = {
+		mdx = "markdown",
+	},
+})
