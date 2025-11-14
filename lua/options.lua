@@ -25,7 +25,8 @@ vim.o.foldlevelstart = 99
 vim.o.winborder = "rounded"
 
 -- vim.opt.clipboard = "unnamedplus"
-vim.cmd.colorscheme("tokyonight-moon")
+-- vim.cmd.colorscheme("tokyonight-moon")
+vim.cmd.colorscheme("catppuccin-macchiato")
 
 vim.diagnostic.config({
 	signs = {
@@ -61,4 +62,33 @@ vim.filetype.add({
 	extension = {
 		mdx = "markdown",
 	},
+})
+
+local function qf_remove_at_cursor()
+	local currline = vim.fn.line(".")
+	local qf_list = vim.fn.getqflist()
+
+	-- Filter out the current line
+	local new_list = {}
+	for i, item in ipairs(qf_list) do
+		if i ~= currline then
+			table.insert(new_list, item)
+		end
+	end
+
+	-- Replace quickfix list
+	vim.fn.setqflist(new_list, "r")
+
+	-- Move cursor back to same (or nearest) line safely
+	local new_line = math.min(currline, #new_list)
+	vim.cmd.normal({ args = { tostring(new_line) .. "G" }, bang = false })
+end
+
+vim.api.nvim_create_augroup("quickfix", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	group = "quickfix",
+	pattern = "qf",
+	callback = function()
+		vim.keymap.set("n", "x", qf_remove_at_cursor, { buffer = true, silent = true })
+	end,
 })

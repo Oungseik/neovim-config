@@ -7,8 +7,8 @@ return {
 		---@type avante.Config
 		opts = {
 			instructions_file = "AGENTS.md",
-			provider = "gemini",
-			auto_suggestions_provider = "copilot",
+
+			provider = "openrouter",
 			providers = {
 				copilot = { model = "gpt-4.1-2025-04-14" },
 				gemini = {
@@ -19,9 +19,45 @@ return {
 					temperature = 0,
 					max_tokens = 8192,
 				},
+				openrouter = {
+					__inherited_from = "openai",
+					endpoint = "https://openrouter.ai/api/v1",
+					api_key_name = "OPENROUTER_API_KEY",
+					model = "qwen/qwen3-coder",
+				},
 			},
+
+			-- dual_boost = {
+			-- 	enabled = false,
+			-- 	first_provider = "openai",
+			-- 	second_provider = "claude",
+			-- 	prompt = "Based on the two reference outputs below, generate a response that incorporates elements from both but reflects your own judgment and unique perspective. Do not provide any explanation, just give the response directly. Reference Output 1: [{{provider1_output}}], Reference Output 2: [{{provider2_output}}]",
+			-- 	timeout = 60000, -- Timeout in milliseconds
+			-- },
+
+			behaviour = {
+				auto_suggestions = false, -- Experimental stage
+				auto_set_highlight_group = true,
+				auto_set_keymaps = true,
+				auto_apply_diff_after_generation = false,
+				support_paste_from_clipboard = false,
+				minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
+				enable_token_counting = true, -- Whether to enable token counting. Default to true.
+				auto_add_current_file = true, -- Whether to automatically add the current file when opening a new chat. Default to true.
+				auto_approve_tool_permissions = false, -- Default: auto-approve all tools (no prompts)
+				-- Examples:
+				-- auto_approve_tool_permissions = false,                -- Show permission prompts for all tools
+				-- auto_approve_tool_permissions = {"bash", "str_replace"}, -- Auto-approve specific tools only
+				---@type "popup" | "inline_buttons"
+				confirmation_ui_style = "inline_buttons",
+				--- Whether to automatically open files and navigate to lines when ACP agent makes edits
+				---@type boolean
+				-- acp_follow_agent_locations = true,
+			},
+
 			hints = { enabled = false },
 			windows = { width = 40 },
+
 			system_prompt = function()
 				local hub = require("mcphub").get_hub_instance()
 				return hub and hub:get_active_servers_prompt() or ""
@@ -44,6 +80,7 @@ return {
 				"MeanderingProgrammer/render-markdown.nvim",
 				opts = {
 					file_types = { "markdown", "Avante" },
+					anti_conceal = { enabled = false },
 				},
 				ft = { "markdown", "Avante" },
 			},
@@ -60,18 +97,6 @@ return {
 					{ "<leader>am", ":MCPHub<cr>", desc = "MCP Hub" },
 				},
 			},
-			-- {
-			-- 	"saghen/blink.compat",
-			-- 	lazy = true,
-			-- 	opts = {},
-			-- 	config = function()
-			-- 		-- monkeypatch cmp.ConfirmBehavior for Avante
-			-- 		require("cmp").ConfirmBehavior = {
-			-- 			Insert = "insert",
-			-- 			Replace = "replace",
-			-- 		}
-			-- 	end,
-			-- },
 		},
 		keys = {
 			{ "<leader>a", "<Nop>", desc = "+Avante" },

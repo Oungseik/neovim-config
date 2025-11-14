@@ -3,20 +3,28 @@ return {
 	-- { "thenbe/neotest-playwright" },
 	{
 		"nvim-neotest/neotest",
+		version = "*",
 		dependencies = {
 			"nvim-neotest/nvim-nio",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"marilari88/neotest-vitest",
 			"arthur944/neotest-bun",
-			"fredrikaverpil/neotest-golang",
+			{
+				"fredrikaverpil/neotest-golang",
+				version = "*", -- Optional, but recommended; track releases
+				build = function()
+					vim.system({ "go", "install", "gotest.tools/gotestsum@latest" }):wait() -- Optional, but recommended
+				end,
+			},
 		},
 		config = function()
 			require("neotest").setup({
 				adapters = {
 					require("rustaceanvim.neotest"),
-					require("neotest-golang"),
+					require("neotest-golang")({ runner = "gotestsum" }),
 					require("neotest-vitest"),
+
 					-- require("neotest-bun"),
 					-- require("neotest-playwright").adapter({
 					--   options = {
@@ -34,7 +42,7 @@ return {
 				desc = "+Tests",
 				silent = true,
 			},
-			{ "<leader>ta", ":lua require('neotest').run.attach()<cr>", desc = "Attach Test", silent = true },
+			-- { "<leader>ta", ":lua require('neotest').run.attach()<cr>", desc = "Attach Test", silent = true },
 			{
 				"<leader>td",
 				":lua require('neotest').run.run({strategy = 'dap'})<cr>",
@@ -48,7 +56,12 @@ return {
 				silent = true,
 			},
 			{ "<leader>to", ":Neotest output-panel<cr>", desc = "Output Panel", silent = true },
-			{ "<leader>tO", ":lua require('neotest').output_panel.clear()<cr>", desc = "Clear Output Panel", silent = true },
+			{
+				"<leader>tO",
+				":lua require('neotest').output_panel.clear()<cr>",
+				desc = "Clear Output Panel",
+				silent = true,
+			},
 			{ "<leader>tt", ":lua require('neotest').run.run()<cr>", desc = "Run Test", silent = true },
 			{ "<leader>tS", ":lua require('neotest').run.stop()<cr>", desc = "Stop", silent = true },
 			{

@@ -148,5 +148,13 @@ return {
 			desc = "Search text",
 			mode = "n",
 		},
+		{
+			"<leader>sq",
+			function()
+				Snacks.picker.qflist()
+			end,
+			desc = "Search quick fix list",
+			mode = "n",
+		},
 	},
 }

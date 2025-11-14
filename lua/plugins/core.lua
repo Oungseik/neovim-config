@@ -1,7 +1,8 @@
 return {
 	-- { "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
-	{ "folke/tokyonight.nvim", lazy = false, priority = 1000 },
-	-- { "catppuccin/nvim", lazy = false, name = "catppuccin" },
+	-- { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+	{ "catppuccin/nvim", lazy = false, name = "catppuccin", priority = 1000 },
+	{ "kevinhwang91/nvim-bqf" },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		name = "nvim-treesitter",
