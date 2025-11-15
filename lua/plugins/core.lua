@@ -6,15 +6,36 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		name = "nvim-treesitter",
+		branch = "main",
+		lazy = false,
+		priority = 1000,
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			require("nvim-treesitter").setup({
 				modules = {},
-				ensure_installed = { "lua", "hurl", "rust", "javascript", "typescript" },
-				ignore_install = {},
-				auto_install = true,
+				auto_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
 				sync_install = false,
+			})
+
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = {
+					"rust",
+					"markdown",
+					"hurl",
+					"lua",
+					"typescript",
+					"javascript",
+					"typescriptreact",
+          "javascriptreact",
+          "svelte",
+          "html",
+          "css",
+					"go",
+				},
+				callback = function()
+					vim.treesitter.start()
+				end,
 			})
 		end,
 	},
