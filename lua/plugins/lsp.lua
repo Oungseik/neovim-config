@@ -50,6 +50,7 @@ return {
 			vim.lsp.enable("ruff")
 			vim.lsp.enable("ty")
 			vim.lsp.enable("markdown_oxide")
+			vim.lsp.enable("yamlls")
 		end,
 	},
 
