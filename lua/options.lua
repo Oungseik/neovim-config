@@ -25,7 +25,6 @@ vim.o.foldlevelstart = 99
 vim.o.winborder = "rounded"
 
 -- vim.opt.clipboard = "unnamedplus"
--- vim.cmd.colorscheme("tokyonight-moon")
 vim.cmd.colorscheme("catppuccin-macchiato")
 
 vim.diagnostic.config({

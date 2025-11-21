@@ -1,6 +1,7 @@
 return {
 	-- { "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
 	-- { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+  -- { "olimorris/onedarkpro.nvim", lazy = false, priority = 1000 },
 	{ "catppuccin/nvim", lazy = false, name = "catppuccin", priority = 1000 },
 	{ "kevinhwang91/nvim-bqf" },
 	{
@@ -27,10 +28,10 @@ return {
 					"typescript",
 					"javascript",
 					"typescriptreact",
-          "javascriptreact",
-          "svelte",
-          "html",
-          "css",
+					"javascriptreact",
+					"svelte",
+					"html",
+					"css",
 					"go",
 				},
 				callback = function()
