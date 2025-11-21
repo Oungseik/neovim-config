@@ -10,13 +10,7 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 			"marilari88/neotest-vitest",
 			"arthur944/neotest-bun",
-			{
-				"fredrikaverpil/neotest-golang",
-				version = "*", -- Optional, but recommended; track releases
-				build = function()
-					vim.system({ "go", "install", "gotest.tools/gotestsum@latest" }):wait() -- Optional, but recommended
-				end,
-			},
+			{ "fredrikaverpil/neotest-golang", version = "*" },
 		},
 		config = function()
 			require("neotest").setup({
