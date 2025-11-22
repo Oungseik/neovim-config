@@ -2,7 +2,6 @@ return {
 	{
 		"rcarriga/nvim-dap-ui",
 		lazy = true,
-		version = "*",
 		opts = {
 			layouts = {
 				{
