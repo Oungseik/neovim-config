@@ -1,9 +1,17 @@
 return {
 	-- { "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
 	-- { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
-  -- { "olimorris/onedarkpro.nvim", lazy = false, priority = 1000 },
+	-- { "olimorris/onedarkpro.nvim", lazy = false, priority = 1000 },
 	{ "catppuccin/nvim", lazy = false, name = "catppuccin", priority = 1000 },
 	{ "kevinhwang91/nvim-bqf" },
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		opts = {
+			file_types = { "markdown", "Avante" },
+			anti_conceal = { enabled = false },
+		},
+		ft = { "markdown", "Avante" },
+	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		name = "nvim-treesitter",

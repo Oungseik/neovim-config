@@ -23,7 +23,7 @@ return {
 					__inherited_from = "openai",
 					endpoint = "https://openrouter.ai/api/v1",
 					api_key_name = "OPENROUTER_API_KEY",
-					model = "qwen/qwen3-coder",
+					model = "anthropic/claude-haiku-4.5",
 				},
 			},
 
@@ -56,7 +56,7 @@ return {
 			},
 
 			hints = { enabled = false },
-			windows = { width = 40 },
+			windows = { width = 50 },
 
 			system_prompt = function()
 				local hub = require("mcphub").get_hub_instance()
@@ -76,14 +76,6 @@ return {
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
 			"zbirenbaum/copilot.lua", -- for providers='copilot'
-			{
-				"MeanderingProgrammer/render-markdown.nvim",
-				opts = {
-					file_types = { "markdown", "Avante" },
-					anti_conceal = { enabled = false },
-				},
-				ft = { "markdown", "Avante" },
-			},
 			{
 				"ravitemer/mcphub.nvim",
 				dependencies = {

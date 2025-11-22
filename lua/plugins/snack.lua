@@ -117,6 +117,14 @@ return {
 			mode = "n",
 		},
 		{
+			"<leader>sr",
+			function()
+				Snacks.picker.recent()
+			end,
+			desc = "Search recent",
+			mode = "n",
+		},
+		{
 			"<leader>lR",
 			function()
 				Snacks.picker.lsp_references()
