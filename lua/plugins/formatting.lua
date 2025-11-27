@@ -41,14 +41,16 @@ return {
 
 				html = { "biome", "prettier", stop_after_first = true },
 				css = { "biome", "prettier", stop_after_first = true },
-				javascript = { "biome", "deno-fmt", "prettier", stop_after_first = true },
-				typescript = { "biome", "deno-fmt", "prettier", stop_after_first = true },
-				javascriptreact = { "biome", "deno-fmt", "prettier", stop_after_first = true },
-				typescriptreact = { "biome", "deno-fmt", "prettier", stop_after_first = true },
-				json = { "biome", "deno-fmt", "prettier", stop_after_first = true },
-				jsonc = { "biome", "deno-fmt", "prettier", stop_after_first = true },
-				astro = { "prettier", "biome", "deno-fmt", stop_after_first = true },
-				svelte = { "prettier", "biome", "deno-fmt", stop_after_first = true, timeout_ms = 5000 },
+
+				json = { "biome", "prettier", stop_after_first = true },
+				jsonc = { "biome", "prettier", stop_after_first = true },
+				javascript = { "biome", "prettier", stop_after_first = true },
+				typescript = { "biome", "prettier", stop_after_first = true },
+				javascriptreact = { "biome", "prettier", stop_after_first = true },
+				typescriptreact = { "biome", "prettier", stop_after_first = true },
+
+				astro = { "prettier", "biome", stop_after_first = true },
+				svelte = { "prettier", "biome", stop_after_first = true, timeout_ms = 5000 },
 
 				scheme = { "scheme" },
 				sql = { "sleek" },
