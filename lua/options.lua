@@ -91,3 +91,12 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "x", qf_remove_at_cursor, { buffer = true, silent = true })
 	end,
 })
+
+-- Autocmd to clear quickfix list on window close/leave
+vim.api.nvim_create_autocmd({ "BufHidden", "BufDelete" }, {
+	pattern = "quickfix",
+	callback = function()
+		vim.fn.setqflist({}, "r")
+	end,
+	desc = "Wipe quickfix list on close",
+})
