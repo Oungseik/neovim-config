@@ -8,9 +8,8 @@ return {
 		opts = {
 			instructions_file = "AGENTS.md",
 
-			provider = "openrouter",
+			provider = "grok_code",
 			providers = {
-				copilot = { model = "gpt-4.1-2025-04-14" },
 				gemini = {
 					endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
 					api_key_name = "GEMINI_API_KEY",
@@ -19,11 +18,19 @@ return {
 					temperature = 0,
 					max_tokens = 8192,
 				},
-				openrouter = {
+				grok_code = {
 					__inherited_from = "openai",
 					endpoint = "https://openrouter.ai/api/v1",
 					api_key_name = "OPENROUTER_API_KEY",
-					model = "anthropic/claude-haiku-4.5",
+					model = "x-ai/grok-code-fast-1",
+					-- model = "anthropic/claude-haiku-4.5",
+				},
+
+				grok = {
+					__inherited_from = "openai",
+					endpoint = "https://openrouter.ai/api/v1",
+					api_key_name = "OPENROUTER_API_KEY",
+					model = "x-ai/grok-4.1-fast:free",
 				},
 			},
 
@@ -58,16 +65,16 @@ return {
 			hints = { enabled = false },
 			windows = { width = 50 },
 
-			system_prompt = function()
-				local hub = require("mcphub").get_hub_instance()
-				return hub and hub:get_active_servers_prompt() or ""
-			end,
-			-- Using function prevents requiring mcphub before it's loaded
-			custom_tools = function()
-				return {
-					require("mcphub.extensions.avante").mcp_tool(),
-				}
-			end,
+			-- system_prompt = function()
+			-- 	local hub = require("mcphub").get_hub_instance()
+			-- 	return hub and hub:get_active_servers_prompt() or ""
+			-- end,
+			-- -- Using function prevents requiring mcphub before it's loaded
+			-- custom_tools = function()
+			-- 	return {
+			-- 		require("mcphub.extensions.avante").mcp_tool(),
+			-- 	}
+			-- end,
 		},
 		-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 		build = "make",
@@ -75,20 +82,19 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
-			"zbirenbaum/copilot.lua", -- for providers='copilot'
-			{
-				"ravitemer/mcphub.nvim",
-				dependencies = {
-					"nvim-lua/plenary.nvim",
-				},
-				build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
-				config = function()
-					require("mcphub").setup()
-				end,
-				keys = {
-					{ "<leader>am", ":MCPHub<cr>", desc = "MCP Hub" },
-				},
-			},
+			-- {
+			-- 	"ravitemer/mcphub.nvim",
+			-- 	dependencies = {
+			-- 		"nvim-lua/plenary.nvim",
+			-- 	},
+			-- 	build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
+			-- 	config = function()
+			-- 		require("mcphub").setup()
+			-- 	end,
+			-- 	keys = {
+			-- 		{ "<leader>am", ":MCPHub<cr>", desc = "MCP Hub" },
+			-- 	},
+			-- },
 		},
 		keys = {
 			{ "<leader>a", "<Nop>", desc = "+Avante" },

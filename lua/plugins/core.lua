@@ -2,8 +2,10 @@ return {
 	-- { "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
 	-- { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
 	-- { "olimorris/onedarkpro.nvim", lazy = false, priority = 1000 },
+	-- { "rebelot/kanagawa.nvim", lazy = false, priority = 1000 },
+	-- { "neanias/everforest-nvim", lazy = false, priority = 1000 },
 	{ "catppuccin/nvim", lazy = false, name = "catppuccin", priority = 1000 },
-	{ "kevinhwang91/nvim-bqf" },
+	{ "kevinhwang91/nvim-bqf", opts = { auto_enable = false } },
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		opts = {

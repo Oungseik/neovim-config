@@ -58,7 +58,7 @@ vim.api.nvim_set_keymap(
 	"n",
 	"gd",
 	":lua vim.lsp.buf.definition()<cr>",
-	{ noremap = true, silent = true, desc = "Rename" }
+	{ noremap = true, silent = true, desc = "Go to Definition" }
 )
 
 vim.api.nvim_set_keymap(
