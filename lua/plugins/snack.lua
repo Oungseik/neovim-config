@@ -47,6 +47,8 @@ return {
 			function()
 				Snacks.explorer.open({
 					auto_close = true,
+					-- hidden = true,
+					-- ignored = true,
 					layout = { preset = "vertical", layout = { position = "float" } },
 				})
 			end,

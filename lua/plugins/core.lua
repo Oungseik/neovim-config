@@ -43,6 +43,8 @@ return {
 					"html",
 					"css",
 					"go",
+					"prisma",
+          "php",
 				},
 				callback = function()
 					vim.treesitter.start()

@@ -1,6 +1,5 @@
 return {
 	-- { "nvim-lua/plenary.nvim" },
-	-- { "thenbe/neotest-playwright" },
 	{
 		"nvim-neotest/neotest",
 		version = "*",
@@ -9,8 +8,9 @@ return {
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"marilari88/neotest-vitest",
-			"arthur944/neotest-bun",
+			-- "arthur944/neotest-bun",
 			{ "fredrikaverpil/neotest-golang", version = "*" },
+			{ "thenbe/neotest-playwright" },
 		},
 		config = function()
 			require("neotest").setup({
@@ -20,12 +20,12 @@ return {
 					require("neotest-vitest"),
 
 					-- require("neotest-bun"),
-					-- require("neotest-playwright").adapter({
-					--   options = {
-					--     persist_project_selection = true,
-					--     enable_dynamic_test_discovery = true,
-					--   },
-					-- }),
+					require("neotest-playwright").adapter({
+						options = {
+							persist_project_selection = true,
+							enable_dynamic_test_discovery = true,
+						},
+					}),
 				},
 			})
 		end,

@@ -51,6 +51,7 @@ return {
 			vim.lsp.enable("ty")
 			vim.lsp.enable("markdown_oxide")
 			vim.lsp.enable("yamlls")
+			vim.lsp.enable("intelephense")
 		end,
 	},
 

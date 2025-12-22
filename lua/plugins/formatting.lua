@@ -19,6 +19,16 @@ return {
 					args = { "check", "--write", "$FILENAME" },
 				},
 
+				prisma = {
+					meta = {
+						url = "https://www.prisma.io/",
+						description = "Build, fortify, and grow your application easily with an intuitive data model, type-safety, automated migrations, connection pooling and caching.",
+					},
+					command = "prisma-fmt",
+					args = { "format", "-i", "$FILENAME" },
+					stdout = true,
+				},
+
 				scheme = {
 					meta = {
 						url = "https://github.com/raviqqe/schemat",
@@ -48,12 +58,14 @@ return {
 				typescript = { "biome", "prettier", stop_after_first = true },
 				javascriptreact = { "biome", "prettier", stop_after_first = true },
 				typescriptreact = { "biome", "prettier", stop_after_first = true },
+				prisma = { "prisma", lsp_format = true, stop_after_first = true },
 
 				astro = { "prettier", "biome", stop_after_first = true },
 				svelte = { "prettier", "biome", stop_after_first = true, timeout_ms = 5000 },
 
 				scheme = { "scheme" },
 				sql = { "sleek" },
+				php = { "php_cs_fixer", stop_after_first = true },
 			},
 		},
 		keys = {

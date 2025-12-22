@@ -8,7 +8,7 @@ return {
 		opts = {
 			instructions_file = "AGENTS.md",
 
-			provider = "grok_code",
+			provider = "deepseek",
 			providers = {
 				gemini = {
 					endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
@@ -31,6 +31,13 @@ return {
 					endpoint = "https://openrouter.ai/api/v1",
 					api_key_name = "OPENROUTER_API_KEY",
 					model = "x-ai/grok-4.1-fast:free",
+				},
+
+				deepseek = {
+					__inherited_from = "openai",
+					endpoint = "https://openrouter.ai/api/v1",
+					api_key_name = "OPENROUTER_API_KEY",
+					model = "deepseek/deepseek-v3.2",
 				},
 			},
 
