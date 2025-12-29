@@ -1,46 +1,13 @@
+local layouts = require("debugging.layouts")
+local configurations = require("debugging.configurations")
+local adapters = require("debugging.adapters")
+
 return {
 	{
 		"rcarriga/nvim-dap-ui",
 		lazy = true,
 		opts = {
-			layouts = {
-				{
-					elements = {
-						{
-							id = "scopes",
-							size = 0.4,
-						},
-						-- {
-						-- 	id = "breakpoints",
-						-- 	size = 0.25,
-						-- },
-						{
-							id = "stacks",
-							size = 0.4,
-						},
-						{
-							id = "watches",
-							size = 0.2,
-						},
-					},
-					position = "right",
-					size = 64,
-				},
-				{
-					elements = {
-						{
-							id = "repl",
-							size = 0.5,
-						},
-						{
-							id = "console",
-							size = 0.5,
-						},
-					},
-					position = "bottom",
-					size = 10,
-				},
-			},
+			layouts = layouts,
 		},
 	},
 	{
@@ -61,72 +28,8 @@ return {
 			require("dap-go").setup({})
 			dap.set_log_level("TRACE")
 
-			dap.adapters["pwa-node"] = {
-				type = "server",
-				host = "localhost",
-				port = "${port}",
-				executable = {
-					command = "node",
-					args = { "/home/oung/.config/js-debug/src/dapDebugServer.js", "${port}" },
-				},
-			}
-			dap.adapters["rust-gdb"] = {
-				type = "executable",
-				command = "rust-gdb",
-				args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
-			}
-
-			dap.configurations.javascript = {
-				{
-					type = "pwa-node",
-					request = "launch",
-					name = "Launch file",
-					program = "${file}",
-					cwd = "${workspaceFolder}",
-				},
-			}
-			dap.configurations.typescript = {
-				{
-					type = "pwa-node",
-					request = "launch",
-					name = "Launch file",
-					runtimeExecutable = "deno",
-					runtimeArgs = {
-						"run",
-						"--inspect-wait",
-						"--allow-all",
-					},
-					program = "${file}",
-					cwd = "${workspaceFolder}",
-					attachSimplePort = 9229,
-				},
-			}
-			dap.configurations.rust = {
-				{
-					name = "Launch",
-					type = "rust-gdb",
-					request = "launch",
-					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-					end,
-					-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
-					cwd = "${workspaceFolder}",
-					stopAtBeginningOfMainSubprogram = false,
-				},
-				{
-					name = "Select and attach to process",
-					type = "rust-gdb",
-					request = "attach",
-					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-					end,
-					pid = function()
-						local name = vim.fn.input("Executable name (filter): ")
-						return require("dap.utils").pick_process({ filter = name })
-					end,
-					cwd = "${workspaceFolder}",
-				},
-			}
+			dap.adapters = adapters
+			dap.configurations = configurations
 
 			dap.listeners.before.attach.dapui_config = function()
 				dapui.open()

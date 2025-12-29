@@ -60,7 +60,7 @@ return {
 						},
 						environment = {
 							includePaths = {
-								"/home/oung/WordPress/wp-content/plugins/woocommerce/",
+								"/home/oung/Desktop/lampp/htdocs/bookogsend-store/wp-content/plugins/woocommerce",
 								"/home/oung/.composer/vendor/php-stubs/",
 							}, -- this line forces the composer path for the stubs in case inteliphense don't find it...
 						},
