@@ -184,17 +184,17 @@ return {
 		},
 	},
 
-	-- {
-	-- 	"christoomey/vim-tmux-navigator",
-	-- 	event = "BufEnter",
-	-- 	cmd = {
-	-- 		"TmuxNavigateLeft",
-	-- 		"TmuxNavigateDown",
-	-- 		"TmuxNavigateUp",
-	-- 		"TmuxNavigateRight",
-	-- 		"TmuxNavigatePrevious",
-	-- 		"TmuxNavigatorProcessList",
-	-- 	},
-	-- 	keys = { "<c-h>", "<c-j>", "<c-k>", "<c-l>" },
-	-- },
+	{
+		"christoomey/vim-tmux-navigator",
+		event = "BufEnter",
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+			"TmuxNavigatePrevious",
+			"TmuxNavigatorProcessList",
+		},
+		keys = { "<c-h>", "<c-j>", "<c-k>", "<c-l>" },
+	},
 }
