@@ -25,6 +25,10 @@ return {
 		config = function()
 			local dap, dapui = require("dap"), require("dapui")
 
+			if vim.fn.filereadable(".vscode/launch.json") then
+				require("dap.ext.vscode").load_launchjs()
+			end
+
 			require("dap-go").setup({})
 			dap.set_log_level("TRACE")
 

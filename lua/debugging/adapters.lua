@@ -14,4 +14,10 @@ return {
 			args = { "/home/oung/.config/js-debug/src/dapDebugServer.js", "${port}" },
 		},
 	},
+
+	php = {
+		type = "executable",
+		command = "bun",
+		args = { "/home/oung/.config/php-debug/src/phpDebug.ts" },
+	},
 }
