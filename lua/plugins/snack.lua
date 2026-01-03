@@ -9,16 +9,7 @@ return {
 		-- refer to the configuration section below
 		bigfile = { enabled = true },
 		dashboard = { enabled = true },
-		explorer = {
-			enabled = true,
-			win = {
-				list = {
-					keys = {
-						["<S-Enter>"] = { "<S-Enter>", { "pick_win", "jump" }, mode = { "n", "i" } },
-					},
-				},
-			},
-		},
+		explorer = { enabled = true },
 		indent = { enabled = false },
 		-- input = { enabled = true },
 		picker = {
@@ -26,13 +17,6 @@ return {
 			sources = {
 				explorer = {
 					layout = { layout = { position = "right" } },
-					win = {
-						list = {
-							keys = {
-								["<S-Enter>"] = { "<S-Enter>", { "pick_win", "jump" }, mode = { "n", "i" } },
-							},
-						},
-					},
 				},
 			},
 		},
