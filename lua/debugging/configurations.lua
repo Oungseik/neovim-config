@@ -39,6 +39,24 @@ return {
 
 	typescript = {
 		{
+			name = "SvelteKit: debug server-side",
+			type = "pwa-node",
+			request = "launch",
+			skipFiles = { "<node_internals>/**" },
+			cwd = "${workspaceFolder}",
+			runtimeExecutable = "npm",
+			runtimeArgs = { "run-script", "dev" },
+		},
+		{
+			name = "Next.js: debug server-side",
+			type = "pwa-node",
+			request = "launch",
+			skipFiles = { "<node_internals>/**" },
+			cwd = "${workspaceFolder}",
+			runtimeExecutable = "npm",
+			runtimeArgs = { "run-script", "dev" },
+		},
+		{
 			type = "pwa-node",
 			request = "launch",
 			name = "Launch file",
@@ -51,6 +69,30 @@ return {
 			program = "${file}",
 			cwd = "${workspaceFolder}",
 			attachSimplePort = 9229,
+		},
+	},
+
+	typescriptreact = {
+		{
+			name = "Next.js: debug server-side",
+			type = "pwa-node",
+			request = "launch",
+			skipFiles = { "<node_internals>/**" },
+			cwd = "${workspaceFolder}",
+			runtimeExecutable = "npm",
+			runtimeArgs = { "run-script", "dev" },
+		},
+	},
+
+	svelte = {
+		{
+			name = "SvelteKit: debug server-side",
+			type = "pwa-node",
+			request = "launch",
+			skipFiles = { "<node_internals>/**" },
+			cwd = "${workspaceFolder}",
+			runtimeExecutable = "npm",
+			runtimeArgs = { "run-script", "dev" },
 		},
 	},
 }
