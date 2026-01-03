@@ -39,6 +39,7 @@ return {
 		event = "BufEnter",
 		config = true,
 		keys = {
+			{ "<leader>ga", ":!git add %<cr><cr>", desc = "Git add the buffer", silent = true },
 			{ "<leader>gn", ":GitConflictNextConflict<cr>", desc = "Next Conflict", silent = true },
 			{ "<leader>gp", ":GitConflictPrevConflict<cr>", desc = "Prev Conflict", silent = true },
 			{ "<leader>gq", ":GitConflictListQf<cr>", desc = "Conflicts Quickfix", silent = true },
