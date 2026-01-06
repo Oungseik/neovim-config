@@ -35,6 +35,9 @@ return {
 			dap.adapters = adapters
 			dap.configurations = configurations
 
+			-- breakpoint config
+			dap.defaults.php.exception_breakpoints = { "Notice", "Warning", "Error", "Exception" }
+
 			dap.listeners.before.attach.dapui_config = function()
 				dapui.open()
 			end
