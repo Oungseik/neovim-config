@@ -27,6 +27,9 @@ vim.o.winborder = "rounded"
 vim.opt.clipboard = "unnamedplus"
 vim.cmd.colorscheme("catppuccin-macchiato")
 
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.expand("~/.local/share/nvim/undo")
+
 vim.diagnostic.config({
 	signs = {
 		text = {
