@@ -1,10 +1,27 @@
 return {
 	-- { "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
-	-- { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
 	-- { "olimorris/onedarkpro.nvim", lazy = false, priority = 1000 },
 	-- { "rebelot/kanagawa.nvim", lazy = false, priority = 1000 },
 	-- { "neanias/everforest-nvim", lazy = false, priority = 1000 },
-	{ "catppuccin/nvim", lazy = false, name = "catppuccin", priority = 1000 },
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	opts = {
+	-- 		transparent = true,
+	-- 		styles = {
+	-- 			sidebars = "transparent",
+	-- 			floats = "transparent",
+	-- 		},
+	-- 	},
+	-- },
+	{
+		"catppuccin/nvim",
+		lazy = false,
+		name = "catppuccin",
+		priority = 1000,
+		opts = {
+			transparent_background = true,
+		},
+	},
 	{ "kevinhwang91/nvim-bqf", opts = { auto_enable = false } },
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
