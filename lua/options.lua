@@ -44,7 +44,7 @@ vim.diagnostic.config({
 vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint" })
 vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DapBreakpointCondition" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "◆", texthl = "DapBreakpointRejected" })
-vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped" })
+vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped" })
 
 -- auto-reload files when modified externally
 -- https://unix.stackexchange.com/a/383044

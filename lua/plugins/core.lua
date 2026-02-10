@@ -18,9 +18,9 @@ return {
 		lazy = false,
 		name = "catppuccin",
 		priority = 1000,
-		opts = {
-			transparent_background = true,
-		},
+		-- opts = {
+		-- 	transparent_background = true,
+		-- },
 	},
 	{ "kevinhwang91/nvim-bqf", opts = { auto_enable = false } },
 	{
