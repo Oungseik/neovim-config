@@ -28,6 +28,11 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
+		opts = {
+			file_panel = {
+				listing_style = "list",
+			},
+		},
 		keys = {
 			{ "<leader>gd", ":DiffviewClose<cr>", desc = "Diff Close", silent = true },
 			{ "<leader>gD", ":DiffviewOpen<cr>", desc = "Diff Open", silent = true },
