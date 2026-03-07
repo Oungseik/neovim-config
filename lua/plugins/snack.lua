@@ -11,7 +11,8 @@ return {
 		dashboard = { enabled = true },
 		explorer = { enabled = true },
 		indent = { enabled = false },
-		-- input = { enabled = true },
+		input = { enabled = true },
+		-- terminal = { enabled = true },
 		picker = {
 			enabled = true,
 			win = { input = { keys = { ["<C-o>"] = { "<C-o>", { "pick_win", "jump" }, mode = { "n", "i" } } } } },

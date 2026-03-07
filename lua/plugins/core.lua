@@ -1,28 +1,30 @@
 return {
 	-- { "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
 	-- { "olimorris/onedarkpro.nvim", lazy = false, priority = 1000 },
-	-- { "rebelot/kanagawa.nvim", lazy = false, priority = 1000 },
-	-- { "neanias/everforest-nvim", lazy = false, priority = 1000 },
+	{ "rebelot/kanagawa.nvim", lazy = false },
+	-- { "neanias/everforest-nvim", lazy = false },
 	-- {
 	-- 	"folke/tokyonight.nvim",
-	-- 	opts = {
-	-- 		transparent = true,
-	-- 		styles = {
-	-- 			sidebars = "transparent",
-	-- 			floats = "transparent",
-	-- 		},
-	-- 	},
+	--    lazy = false,
+	--    priority = 1000,
+	-- 	-- opts = {
+	-- 	-- transparent = true,
+	-- 	-- styles = {
+	-- 	-- 	sidebars = "transparent",
+	-- 	-- 	floats = "transparent",
+	-- 	-- },
+	-- 	-- },
 	-- },
-	{
-		"catppuccin/nvim",
-		lazy = false,
-		name = "catppuccin",
-		priority = 1000,
-		-- opts = {
-		-- 	transparent_background = true,
-		-- },
-	},
-	{ "kevinhwang91/nvim-bqf", opts = { auto_enable = false } },
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	lazy = false,
+	-- 	name = "catppuccin",
+	-- 	priority = 1000,
+	-- 	-- opts = {
+	-- 	-- 	transparent_background = true,
+	-- 	-- },
+	-- },
+	{ "kevinhwang91/nvim-bqf", opts = { auto_enable = true } },
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		opts = {
@@ -213,5 +215,14 @@ return {
 			"TmuxNavigatorProcessList",
 		},
 		keys = { "<c-h>", "<c-j>", "<c-k>", "<c-l>" },
+	},
+	{
+		"aaronik/treewalker.nvim",
+		keys = {
+			{ "<M-n>", ":Treewalker Down<cr>", desc = "Next block", silent = true },
+			{ "<M-p>", ":Treewalker Up<cr>", desc = "Previous block", silent = true },
+			{ "<M-i>", ":Treewalker Right<cr>", desc = "Inner block", silent = true },
+			{ "<M-o>", ":Treewalker Left<cr>", desc = "Outer block", silent = true },
+		},
 	},
 }

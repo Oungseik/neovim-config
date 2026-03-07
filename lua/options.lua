@@ -25,7 +25,8 @@ vim.o.foldlevelstart = 99
 vim.o.winborder = "rounded"
 
 vim.opt.clipboard = "unnamedplus"
-vim.cmd.colorscheme("catppuccin-macchiato")
+-- vim.cmd.colorscheme("catppuccin-macchiato")
+vim.cmd.colorscheme("kanagawa")
 
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand("~/.local/share/nvim/undo")
