@@ -6,7 +6,7 @@ return {
 			type = "rust-gdb",
 			request = "launch",
 			program = function()
-				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
 			end,
 			-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
 			cwd = "${workspaceFolder}",
