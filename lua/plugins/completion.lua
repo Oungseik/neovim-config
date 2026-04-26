@@ -1,8 +1,16 @@
 return {
 	{
 		"saghen/blink.cmp",
-		dependencies = { "rafamadriz/friendly-snippets", "Kaiser-Yang/blink-cmp-avante" },
-		build = "cargo +nightly build --release",
+		dependencies = {
+			"saghen/blink.lib",
+			"rafamadriz/friendly-snippets",
+		},
+		-- build = "cargo +nightly build --release",
+		build = function()
+			-- build the fuzzy matcher, wait up to 60 seconds
+			-- you can use `gb` in `:Lazy` to rebuild the plugin as needed
+			require("blink.cmp").build():wait(60000)
+		end,
 
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
@@ -43,16 +51,7 @@ return {
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				default = { "avante", "lsp", "path", "snippets", "buffer" },
-				providers = {
-					avante = {
-						module = "blink-cmp-avante",
-						name = "Avante",
-						opts = {
-							-- options for blink-cmp-avante
-						},
-					},
-				},
+				default = { "lsp", "path", "snippets", "buffer" },
 			},
 
 			-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
