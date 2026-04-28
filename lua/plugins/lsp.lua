@@ -71,31 +71,30 @@ return {
 				},
 			}
 
-			vim.lsp.config.ts_ls = {
-				filetypes = { "javascript", "javascriptreact" },
-			}
+			-- vim.lsp.config.ts_ls = {
+			-- 	filetypes = { "javascript", "javascriptreact" },
+			-- }
+			--
+			-- vim.lsp.config.tsgo = {
+			-- 	filetypes = { "typescript", "typescriptreact" },
+			-- }
 
-			vim.lsp.config.tsgo = {
-				filetypes = { "typescript", "typescriptreact" },
-			}
-
-			vim.lsp.enable("cssls")
-
-			vim.lsp.enable("tsgo")
-			vim.lsp.enable("ts_ls")
-			vim.lsp.enable("lua_ls")
-			vim.lsp.enable("prismals")
-			vim.lsp.enable("jsonls")
-			vim.lsp.enable("nil_ls")
-			vim.lsp.enable("gopls")
-			vim.lsp.enable("tombi")
-			vim.lsp.enable("svelte")
-
-			vim.lsp.enable("ruff")
-			vim.lsp.enable("ty")
-			vim.lsp.enable("markdown_oxide")
-			vim.lsp.enable("yamlls")
-			vim.lsp.enable("intelephense")
+			vim.lsp.enable({
+				"lua_ls",
+				"svelte",
+				"cssls",
+				"tsgo",
+				"prismals",
+				"jsonls",
+				"nil_ls",
+				"gopls",
+				"tombi",
+				"ruff",
+				"ty",
+				"markdown_oxide",
+				"yamlls",
+				"intelephense",
+			})
 		end,
 	},
 
