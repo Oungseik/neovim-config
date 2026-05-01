@@ -31,6 +31,8 @@ vim.cmd.colorscheme("kanagawa")
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand("~/.local/share/nvim/undo")
 
+vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>")
+
 vim.diagnostic.config({
 	signs = {
 		text = {
