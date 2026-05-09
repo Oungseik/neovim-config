@@ -53,10 +53,11 @@ return {
 			"<leader>e",
 			function()
 				Snacks.explorer.open({
-					auto_close = true,
+					layout = { layout = { position = "right" } },
+					-- auto_close = true,
 					-- hidden = true,
 					-- ignored = true,
-					layout = { preset = "vertical", layout = { position = "float" } },
+					-- layout = { preset = "vertical", layout = { position = "float" } },
 				})
 			end,
 			desc = "Explorer",
