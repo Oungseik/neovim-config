@@ -80,6 +80,7 @@ return {
 			-- }
 
 			vim.lsp.enable({
+				-- "hls",
 				"lua_ls",
 				"svelte",
 				"cssls",
@@ -97,10 +98,14 @@ return {
 			})
 		end,
 	},
-
+	{
+		"mrcjkb/haskell-tools.nvim",
+		version = "^9",
+		lazy = false,
+	},
 	{
 		"mrcjkb/rustaceanvim",
-		version = "*",
+		version = "9.0.1",
 		lazy = false, -- this plugin is already lazy
 	},
 	{

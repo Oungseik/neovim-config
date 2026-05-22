@@ -66,6 +66,13 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.filetype.add({
 	extension = {
 		mdx = "markdown",
+		env = "sh",
+	},
+	filename = {
+		[".env"] = "sh",
+	},
+	pattern = {
+		[".env"] = "sh",
 	},
 })
 
