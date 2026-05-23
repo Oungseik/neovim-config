@@ -87,7 +87,8 @@ return {
 				"tsgo",
 				"prismals",
 				"jsonls",
-				"nil_ls",
+				-- "nil_ls",
+        "nixd"
 				"gopls",
 				"tombi",
 				"ruff",

@@ -66,7 +66,7 @@ return {
 				scheme = { "scheme" },
 				sql = { "sleek" },
 				php = { "php_cs_fixer", stop_after_first = true },
-				haskell = { "ormolu", lsp_format = "fallback", stop_after_first = true },
+				haskell = { "fourmolu", lsp_format = "fallback", stop_after_first = true },
 			},
 		},
 		keys = {
