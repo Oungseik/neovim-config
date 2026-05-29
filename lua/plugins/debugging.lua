@@ -20,16 +20,20 @@ return {
 		lazy = true,
 		dependencies = {
 			"nvim-neotest/nvim-nio",
+			"mfussenegger/nvim-dap-python",
+			"theHamsta/nvim-dap-virtual-text",
 		},
 
 		config = function()
 			local dap, dapui = require("dap"), require("dapui")
 
-			require("dap-go").setup({})
 			dap.set_log_level("TRACE")
 
 			dap.adapters = adapters
 			dap.configurations = configurations
+
+			require("dap-go").setup({})
+			require("dap-python").setup("python3.14")
 
 			-- breakpoint config
 			-- dap.defaults.php.exception_breakpoints = { "Notice", "Warning", "Error", "Exception" }

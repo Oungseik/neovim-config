@@ -95,4 +95,14 @@ return {
 			runtimeArgs = { "run-script", "dev" },
 		},
 	},
+
+	python = {
+		{
+			name = "Launch python file",
+			type = "python",
+			request = "launch",
+			program = "${file}",
+			console = "integratedTerminal",
+		},
+	},
 }
