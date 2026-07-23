@@ -6,10 +6,13 @@ return {
 			"rafamadriz/friendly-snippets",
 		},
 		-- build = "cargo +nightly build --release",
+		-- build = function()
+		-- 	-- build the fuzzy matcher, wait up to 60 seconds
+		-- 	-- you can use `gb` in `:Lazy` to rebuild the plugin as needed
+		-- 	require("blink.cmp").build():wait(60000)
+		-- end,
 		build = function()
-			-- build the fuzzy matcher, wait up to 60 seconds
-			-- you can use `gb` in `:Lazy` to rebuild the plugin as needed
-			require("blink.cmp").build():wait(60000)
+			require("blink.cmp").build():pwait()
 		end,
 
 		---@module 'blink.cmp'

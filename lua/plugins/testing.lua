@@ -4,6 +4,7 @@ return {
 		"nvim-neotest/neotest",
 		version = "*",
 		dependencies = {
+			"nvim-neotest/neotest-python",
 			"nvim-neotest/nvim-nio",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
@@ -17,7 +18,11 @@ return {
 				adapters = {
 					require("rustaceanvim.neotest"),
 					require("neotest-golang")({ runner = "gotestsum" }),
-					require("neotest-vitest"),
+					require("neotest-vitest")({
+						-- run vitest with bun.js
+						vitestCommand = "bun --bun vitest",
+					}),
+					require("neotest-python"),
 
 					-- require("neotest-bun"),
 					require("neotest-playwright").adapter({
