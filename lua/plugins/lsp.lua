@@ -71,14 +71,6 @@ return {
 				},
 			}
 
-			-- vim.lsp.config.ts_ls = {
-			-- 	filetypes = { "javascript", "javascriptreact" },
-			-- }
-			--
-			-- vim.lsp.config.tsgo = {
-			-- 	filetypes = { "typescript", "typescriptreact" },
-			-- }
-
 			vim.lsp.enable({
 				-- "hls",
 				"lua_ls",

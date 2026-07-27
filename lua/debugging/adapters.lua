@@ -11,13 +11,13 @@ return {
 		port = "${port}",
 		executable = {
 			command = "node",
-			args = { "/home/oung/.config/js-debug/src/dapDebugServer.js", "${port}" },
+			args = { vim.fn.expand("~/.local/share/debuggers/dapDebugServer.js"), "${port}" },
 		},
 	},
 
 	php = {
 		type = "executable",
-		command = "bun",
-		args = { "/home/oung/.config/php-debug/src/phpDebug.ts" },
+		command = "node",
+		args = { vim.fn.expand("~/.local/share/debuggers/phpDebug.js") },
 	},
 }
