@@ -76,7 +76,7 @@ return {
 				"lua_ls",
 				"svelte",
 				"cssls",
-				"tsgo",
+				"tsc",
 				"prismals",
 				"jsonls",
 				-- "nil_ls",
