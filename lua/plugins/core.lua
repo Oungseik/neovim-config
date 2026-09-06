@@ -28,10 +28,9 @@ return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		opts = {
-			file_types = { "markdown", "Avante" },
 			anti_conceal = { enabled = false },
 		},
-		ft = { "markdown", "Avante" },
+		ft = { "markdown" },
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
