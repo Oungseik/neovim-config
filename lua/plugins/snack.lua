@@ -18,7 +18,7 @@ return {
 			win = { input = { keys = { ["<C-o>"] = { "<C-o>", { "pick_win", "jump" }, mode = { "n", "i" } } } } },
 			sources = {
 				explorer = {
-					layout = { layout = { position = "right" } },
+					layout = { preset = "vertical", layout = { position = "float" } },
 					win = {
 						list = {
 							keys = { ["<C-o>"] = { "<C-o>", { "pick_win", "jump" }, mode = { "n", "i" } } },
