@@ -23,18 +23,43 @@ return {
 							schema = {
 								model = {
 									default = "glm-5.3",
-									choices = { ["glm-5.3"] = { meta = { context_window = 200000 }, opts = { has_vision = false } } },
+									choices = {
+										["glm-5.3"] = {
+											meta = { context_window = 200000 },
+											opts = { has_vision = false },
+										},
+									},
 								},
 								max_tokens = { default = 16384 },
 							},
 						})
 					end,
+					deepseek = function()
+						local adapter = require("codecompanion.adapters").extend("deepseek", {
+							env = {
+								api_key = [[cmd:if [ -z "$DEEPSEEK_API_KEY" ]; then . "$HOME/.env" >/dev/null 2>&1 || exit 1; fi; test -n "$DEEPSEEK_API_KEY" && printf "%s" "$DEEPSEEK_API_KEY"]],
+							},
+							schema = {
+								model = { default = "deepseek-flash" },
+								max_tokens = { default = 16384 },
+							},
+						})
+						-- The built-in adapter still lists the retired deepseek-v4-flash/chat/reasoner names
+						adapter.schema.model.choices = {
+							["deepseek-flash"] = {
+								formatted_name = "DeepSeek V4.1 Flash",
+								meta = { context_window = 1000000 },
+								opts = { can_reason = true, can_use_tools = true },
+							},
+						}
+						return adapter
+					end,
 				},
 			},
 			interactions = {
-				chat = { adapter = "zai" },
-				inline = { adapter = "zai" },
-				cmd = { adapter = "zai" },
+				chat = { adapter = "deepseek" },
+				inline = { adapter = "deepseek" },
+				cmd = { adapter = "deepseek" },
 			},
 			display = { chat = { window = { layout = "vertical", position = "right", width = 0.5 } } },
 			extensions = {
