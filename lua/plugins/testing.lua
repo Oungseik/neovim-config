@@ -1,3 +1,38 @@
+---Pick the vitest runner for a test file. A `.vitest-runtime` file containing
+---`bun`, searched from the test file upwards (nearest wins), runs vitest with
+---bun. Everything else uses the project-local vitest under node, falling back
+---to `vitest` on PATH.
+---@param path string Path of the test file or directory being run
+---@return string
+local function vitest_command(path)
+	-- `path` may be a file or a directory (neotest runs folder trees too), so
+	-- search from it directly: vim.fs.find/root treat it as the first stop.
+	local marker = vim.fs.find(".vitest-runtime", { path = path, upward = true, type = "file" })[1]
+	if marker then
+		local ok, lines = pcall(vim.fn.readfile, marker, "", 1)
+		if ok and vim.trim(lines[1] or "") == "bun" then
+			return "bun --bun vitest"
+		end
+	end
+
+	-- Match neotest-vitest's default: nearest node_modules/.bin/vitest, then a
+	-- hoisted one at the git root, otherwise `vitest` from PATH.
+	local function node_bin(root)
+		if not root then
+			return nil
+		end
+		local bin = vim.fs.joinpath(root, "node_modules", ".bin", "vitest")
+		return vim.uv.fs_stat(bin) and bin or nil
+	end
+
+	local bin = node_bin(vim.fs.root(path, { "node_modules" })) or node_bin(vim.fs.root(path, { ".git" }))
+	if bin then
+		return bin
+	end
+
+	return "vitest"
+end
+
 return {
 	-- { "nvim-lua/plenary.nvim" },
 	{
@@ -18,10 +53,7 @@ return {
 				adapters = {
 					require("rustaceanvim.neotest"),
 					require("neotest-golang")({ runner = "gotestsum" }),
-					require("neotest-vitest")({
-						-- run vitest with bun.js
-						vitestCommand = "bun --bun vitest",
-					}),
+					require("neotest-vitest")({ vitestCommand = vitest_command }),
 					require("neotest-python"),
 
 					-- require("neotest-bun"),
