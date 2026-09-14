@@ -57,7 +57,10 @@ return {
 				},
 			},
 			interactions = {
-				chat = { adapter = "deepseek" },
+				chat = {
+					adapter = "deepseek",
+					tools = { opts = { default_tools = { "agent" } } },
+				},
 				inline = { adapter = "deepseek" },
 				cmd = { adapter = "deepseek" },
 			},
