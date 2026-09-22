@@ -117,6 +117,13 @@ nvim
 - `<leader>ai` - Inline edit
 - `<leader>ae` - Explain code
 
+#### Markdown
+- `<M-x>` (Alt+x) - Add an unchecked checkbox to a list item, or toggle an existing
+  task checkbox between `[ ]` and `[x]`.
+  The buffer-local mapping loads only for Markdown via `after/ftplugin/markdown.lua`.
+  Uses Neovim's native Tree-sitter API and the Markdown parser; code blocks and
+  non-list text are left unchanged.
+
 ### 3. Plugins
 
 **Core:**
