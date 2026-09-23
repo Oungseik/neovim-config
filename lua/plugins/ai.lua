@@ -12,6 +12,35 @@ return {
 		opts = {
 			adapters = {
 				http = {
+					opencode_go = function()
+						return require("codecompanion.adapters").extend("openai", {
+							name = "opencode_go",
+							formatted_name = "OpenCode Go",
+							url = "https://opencode.ai/zen/go/v1/chat/completions",
+							env = {
+								api_key = function()
+									local key = vim.env.OPENCODE_GO_API_KEY
+									if key and key ~= "" then return key end
+									local auth = vim.json.decode(table.concat(vim.fn.readfile(vim.fn.expand("~/.local/share/opencode/auth.json")), "\n"))
+									return auth["opencode-go"].key
+								end,
+							},
+							headers = {
+								["User-Agent"] = "CodeCompanion.nvim/19.23.0",
+								["x-opencode-session"] = vim.fn.sha256(tostring(vim.uv.hrtime()) .. tostring(vim.uv.os_getpid())),
+							},
+							schema = {
+								model = {
+									default = "mimo-v2.6-pro",
+									choices = {
+										["mimo-v2.6-pro"] = {
+											opts = { can_use_tools = true, has_vision = false },
+										},
+									},
+								},
+							},
+						})
+					end,
 					zai = function()
 						return require("codecompanion.adapters").extend("openai", {
 							name = "zai",
@@ -58,11 +87,11 @@ return {
 			},
 			interactions = {
 				chat = {
-					adapter = "deepseek",
+					adapter = "opencode_go",
 					tools = { opts = { default_tools = { "agent" } } },
 				},
-				inline = { adapter = "deepseek" },
-				cmd = { adapter = "deepseek" },
+				inline = { adapter = "opencode_go" },
+				cmd = { adapter = "opencode_go" },
 			},
 			display = { chat = { window = { layout = "vertical", position = "right", width = 0.5 } } },
 			extensions = {
