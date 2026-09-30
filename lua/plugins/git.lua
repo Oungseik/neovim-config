@@ -29,8 +29,13 @@ return {
 	{
 		"sindrets/diffview.nvim",
 		opts = {
+			view = {
+				default = { layout = "diff2_horizontal" },
+				merge_tool = { layout = "diff1_plain" },
+			},
 			file_panel = {
 				listing_style = "list",
+				win_config = { position = "left", width = 30 },
 			},
 		},
 		keys = {
