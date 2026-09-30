@@ -24,7 +24,6 @@ return {
 	-- 	-- 	transparent_background = true,
 	-- 	-- },
 	-- },
-	{ "kevinhwang91/nvim-bqf", opts = { auto_enable = true } },
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		opts = {

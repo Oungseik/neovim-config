@@ -36,11 +36,14 @@ vim.api.nvim_set_keymap("i", "<C-l>", "<End>", {})
 
 -- lsp
 vim.api.nvim_set_keymap("n", "<leader>l", "<Nop>", { noremap = true, silent = true, desc = "+LSP" })
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
 	"<leader>lq",
-	":lua vim.diagnostic.setloclist()<cr>",
-	{ noremap = true, silent = true, desc = "Quickfix" }
+	function()
+		vim.fn.setqflist({}, " ", { title = "Diagnostics", items = vim.diagnostic.toqflist(vim.diagnostic.get(0)) })
+		vim.cmd.cwindow()
+	end,
+	{ silent = true, desc = "Buffer Diagnostics Quickfix" }
 )
 vim.api.nvim_set_keymap(
 	"n",
