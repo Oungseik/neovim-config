@@ -21,7 +21,7 @@ return {
 		dependencies = {
 			"nvim-neotest/nvim-nio",
 			"mfussenegger/nvim-dap-python",
-			"theHamsta/nvim-dap-virtual-text",
+			{ "theHamsta/nvim-dap-virtual-text", opts = {} },
 		},
 
 		config = function()
