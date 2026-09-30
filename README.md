@@ -99,10 +99,15 @@ nvim
 - `K` - Hover documentation
 
 #### Git
-- `<leader>gg` - Open Neogit
-- `<leader>gl` - Open LazyGit
-- `<leader>gd` - Diff view
-- `<leader>gc` - Git conflicts
+- `<leader>gN` - Open Neogit
+- `<leader>gg` - Open LazyGit
+- `<leader>gD` - Open side-by-side diff (file list on the left; conflicts use one editable pane)
+- `<leader>gd` - Close Diffview
+- `<leader>gI` - Open single-pane unified diff of unstaged changes; `:q` closes it
+- Inside Diffview: `<leader>b` toggles the file list; `g<C-x>` cycles layouts
+- Inside Diffview conflicts: `<leader>co` accepts current, `<leader>ct` accepts incoming,
+  `<leader>ca` accepts both; `[x` / `]x` jump between conflicts. Save with `<leader>w`.
+- In ordinary conflict buffers: `co` accepts current, `ct` accepts incoming, `cb` accepts both
 
 #### Debugging
 - `<leader>db` - Toggle breakpoint

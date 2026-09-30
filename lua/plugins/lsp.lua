@@ -1,26 +1,6 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = {
-			{
-				"hedyhli/outline.nvim",
-				lazy = true,
-				cmd = { "Outline", "OutlineOpen" },
-				keys = { -- Example mapping to toggle outline
-					{ "<leader>lo", "<cmd>Outline<CR>", desc = "Toggle outline" },
-				},
-				opts = {
-					outline_window = {
-						auto_close = true,
-					},
-					symbols = {
-						icons = {
-							Function = { icon = "󰊕", hl = "Function" },
-						},
-					},
-				},
-			},
-		},
 		config = function()
 			vim.lsp.config.lua_ls = {
 				settings = {
