@@ -67,3 +67,7 @@ vim.api.nvim_set_keymap(
 	"<cmd>lua vim.lsp.buf.hover({ border = 'rounded' })<cr>",
 	{ noremap = true, silent = true, desc = "Hover" }
 )
+
+-- Use Neovim's native commenting with the existing shortcut.
+vim.keymap.set("n", "<leader>/", "gcc", { remap = true, silent = true, desc = "Toggle comment line" })
+vim.keymap.set("x", "<leader>/", "gc", { remap = true, silent = true, desc = "Toggle comment" })

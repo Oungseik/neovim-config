@@ -74,13 +74,6 @@ return {
 	{ "folke/which-key.nvim", event = "VeryLazy" },
 
 	{
-		"numToStr/Comment.nvim",
-		lazy = true,
-		event = "BufNew",
-		opts = { toggler = { line = "<leader>/" }, opleader = { line = "<leader>/" } },
-	},
-
-	{
 		"kevinhwang91/nvim-ufo",
 		event = "BufNew",
 		dependencies = { "kevinhwang91/promise-async" },

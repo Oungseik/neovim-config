@@ -85,6 +85,11 @@ nvim
 - `<leader>sg` - Grep search
 - `<leader>m` - Harpoon marks
 
+#### Editing
+- `<leader>/` - Toggle line comments in normal or visual mode (native Neovim)
+- `<leader>c` - Close buffer while preserving window layout (Snacks)
+- `<M-3>` - Toggle floating terminal in normal, insert, or terminal mode (Snacks)
+
 #### LSP
 - `<leader>lr` - Rename symbol
 - `<leader>la` - Code action
@@ -148,7 +153,7 @@ nvim
 **Git:**
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Git signs
 - [neogit](https://github.com/NeogitOrg/neogit) - Git interface
-- [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) - LazyGit integration
+- LazyGit integration through [snacks.nvim](https://github.com/folke/snacks.nvim)
 
 ## Customization
 

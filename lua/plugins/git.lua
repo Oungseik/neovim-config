@@ -60,25 +60,6 @@ return {
 			{ "<leader>gN", ":Neogit<cr>", desc = "Neogit", silent = true },
 		},
 	},
-	{
-		-- nvim v0.8.0
-		"kdheepak/lazygit.nvim",
-		lazy = true,
-		cmd = {
-			"LazyGit",
-			"LazyGitConfig",
-			"LazyGitCurrentFile",
-			"LazyGitFilter",
-			"LazyGitFilterCurrentFile",
-		},
-		-- optional for floating window border decoration
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		keys = {
-			{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-		},
-	},
 	-- {
 	-- 	"pwntester/octo.nvim",
 	-- 	cmd = "Octo",
