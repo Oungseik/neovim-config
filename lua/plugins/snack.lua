@@ -140,6 +140,7 @@ return {
 			"<leader>lo",
 			function()
 				Snacks.picker.lsp_symbols({
+					focus = "list",
 					layout = {
 						preset = "sidebar",
 						preview = false,
