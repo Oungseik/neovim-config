@@ -62,7 +62,7 @@ return {
 			"sindrets/diffview.nvim",
 		},
 		keys = {
-			{ "<leader>gN", ":Neogit<cr>", desc = "Neogit", silent = true },
+			{ "<leader>gg", ":Neogit<cr>", desc = "Neogit", silent = true },
 		},
 	},
 	-- {

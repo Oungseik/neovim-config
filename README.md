@@ -10,7 +10,7 @@ This configuration transforms Neovim into a full-featured IDE with:
 - **Intelligent completion** with blink.cmp (Rust-based engine)
 - **Powerful debugging** with nvim-dap and custom adapters
 - **AI assistant integration** with opencode.nvim
-- **Git workflow** integration (gitsigns, neogit, lazygit, diffview)
+- **Git workflow** integration (gitsigns, neogit, diffview)
 - **File navigation** with harpoon and snacks.nvim picker
 
 ## Requirements
@@ -99,8 +99,7 @@ nvim
 - `K` - Hover documentation
 
 #### Git
-- `<leader>gN` - Open Neogit
-- `<leader>gg` - Open LazyGit
+- `<leader>gg` - Open Neogit
 - `<leader>gD` - Open side-by-side diff (file list on the left; conflicts use one editable pane)
 - `<leader>gd` - Close Diffview
 - `<leader>gI` - Open single-pane unified diff of unstaged changes; `:q` closes it
@@ -158,7 +157,6 @@ nvim
 **Git:**
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Git signs
 - [neogit](https://github.com/NeogitOrg/neogit) - Git interface
-- LazyGit integration through [snacks.nvim](https://github.com/folke/snacks.nvim)
 
 ## Customization
 

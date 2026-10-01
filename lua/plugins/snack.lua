@@ -49,7 +49,6 @@ return {
 	},
 
 	keys = {
-		{ "<leader>gg", function() Snacks.lazygit() end, desc = "LazyGit" },
 		{ "<leader>c", function() Snacks.bufdelete() end, desc = "Close Buffer" },
 		{ "<M-3>", function() Snacks.terminal.toggle() end, mode = { "n", "i", "t" }, desc = "Toggle Term" },
 		{
