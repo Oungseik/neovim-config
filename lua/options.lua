@@ -1,4 +1,15 @@
-vim.o.foldmethod = "manual"
+vim.o.foldmethod = "indent"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter" }, {
+	callback = function(event)
+		if vim.bo[event.buf].buftype ~= "" then
+			return
+		end
+		local ok, parser = pcall(vim.treesitter.get_parser, event.buf)
+		local has_folds = ok and parser and vim.treesitter.query.get(parser:lang(), "folds")
+		vim.wo.foldmethod = has_folds and "expr" or "indent"
+	end,
+})
 vim.wo.number = true
 vim.o.cursorline = true
 -- vim.o.signcolumn = "yes"

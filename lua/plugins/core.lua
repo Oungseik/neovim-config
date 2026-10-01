@@ -73,22 +73,6 @@ return {
 	{ "folke/which-key.nvim", event = "VeryLazy" },
 
 	{
-		"kevinhwang91/nvim-ufo",
-		event = "BufNew",
-		dependencies = { "kevinhwang91/promise-async" },
-		config = function()
-			require("ufo").setup({
-				provider_selector = function(bufnr, filetype, buftype)
-					if filetype == "cabal" then
-						return { "indent", "treesitter" }
-					end
-					return { "lsp", "indent" }
-				end,
-			})
-		end,
-	},
-
-	{
 		"akinsho/bufferline.nvim",
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
