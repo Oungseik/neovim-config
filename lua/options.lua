@@ -36,7 +36,6 @@ vim.o.foldlevelstart = 99
 vim.o.winborder = "rounded"
 
 vim.opt.clipboard = "unnamedplus"
--- vim.cmd.colorscheme("catppuccin-macchiato")
 vim.cmd.colorscheme("kanagawa")
 
 vim.opt.undofile = true
@@ -91,19 +90,13 @@ local function qf_remove_at_cursor()
 	local currline = vim.fn.line(".")
 	local qf_list = vim.fn.getqflist()
 
-	-- Filter out the current line
-	local new_list = {}
-	for i, item in ipairs(qf_list) do
-		if i ~= currline then
-			table.insert(new_list, item)
-		end
-	end
+	table.remove(qf_list, currline)
 
 	-- Replace quickfix list
-	vim.fn.setqflist(new_list, "r")
+	vim.fn.setqflist(qf_list, "r")
 
 	-- Move cursor back to same (or nearest) line safely
-	local new_line = math.min(currline, #new_list)
+	local new_line = math.min(currline, #qf_list)
 	vim.cmd.normal({ args = { tostring(new_line) .. "G" }, bang = false })
 end
 

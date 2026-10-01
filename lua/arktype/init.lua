@@ -17,16 +17,6 @@ do
 end
 local queries = {}
 local buffers = {}
-local completion_timer
-
-local function cancel_completion()
-	if completion_timer then
-		completion_timer:stop()
-		completion_timer:close()
-		completion_timer = nil
-	end
-end
-
 local function definition(node, buf)
 	local parent = node:parent()
 	if parent and parent:type() == "pair" and parent:field("key")[1] == node then
@@ -211,18 +201,9 @@ local function refresh(buf)
 	state.first, state.last = nil, nil
 end
 
-local function enable_completion(buf)
-	for _, client in ipairs(vim.lsp.get_clients({ bufnr = buf, method = "textDocument/completion" })) do
-		vim.lsp.completion.enable(true, client.id, buf, { autotrigger = true })
-	end
-end
-
---- Enable highlighting and native LSP completion (Neovim 0.11+).
---- Set completion=false when using nvim-cmp, blink.cmp, or another completion UI.
-function M.setup(opts)
-	opts = opts or {}
+--- Enable highlighting; blink.cmp's LSP source provides completion.
+function M.setup()
 	assert(vim.fn.has("nvim-0.11") == 1, "ArkType requires Neovim 0.11 or newer")
-	cancel_completion()
 	local group = api.nvim_create_augroup("ArkType", { clear = true })
 	local function colors()
 		for suffix, link in pairs({
@@ -244,58 +225,9 @@ function M.setup(opts)
 			refresh(event.buf)
 		end,
 	})
-	if opts.completion ~= false then
-		api.nvim_create_autocmd({ "LspAttach", "BufEnter" }, {
-			group = group,
-			callback = function(event)
-				if languages[vim.bo[event.buf].filetype] then
-					enable_completion(event.buf)
-				end
-			end,
-		})
-		api.nvim_create_autocmd({ "InsertLeave", "BufLeave", "TextChangedP", "FileType" }, {
-			group = group,
-			callback = cancel_completion,
-		})
-		api.nvim_create_autocmd("TextChangedI", {
-			group = group,
-			callback = function(event)
-				cancel_completion()
-				if not languages[vim.bo[event.buf].filetype] or vim.fn.pumvisible() == 1 then
-					return
-				end
-				local buf = event.buf
-				local tick = api.nvim_buf_get_changedtick(buf)
-				local cursor = api.nvim_win_get_cursor(0)
-				local timer
-				timer = vim.defer_fn(function()
-					if completion_timer ~= timer then
-						return
-					end
-					completion_timer = nil
-					if
-						api.nvim_get_current_buf() ~= buf
-						or vim.fn.mode() ~= "i"
-						or not languages[vim.bo[buf].filetype]
-						or api.nvim_buf_get_changedtick(buf) ~= tick
-						or not vim.deep_equal(api.nvim_win_get_cursor(0), cursor)
-						or vim.fn.pumvisible() == 1
-					then
-						return
-					end
-					-- Let the server handle incomplete strings and aliased imports after typing settles.
-					vim.lsp.completion.get()
-				end, 100)
-				completion_timer = timer
-			end,
-		})
-	end
 	for _, buf in ipairs(api.nvim_list_bufs()) do
 		if api.nvim_buf_is_loaded(buf) and languages[vim.bo[buf].filetype] then
 			refresh(buf)
-			if opts.completion ~= false then
-				enable_completion(buf)
-			end
 		end
 	end
 end

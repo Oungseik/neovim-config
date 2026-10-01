@@ -34,7 +34,6 @@ local function vitest_command(path)
 end
 
 return {
-	-- { "nvim-lua/plenary.nvim" },
 	{
 		"nvim-neotest/neotest",
 		version = "*",
@@ -44,7 +43,6 @@ return {
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"marilari88/neotest-vitest",
-			-- "arthur944/neotest-bun",
 			{ "fredrikaverpil/neotest-golang", version = "*" },
 			{ "thenbe/neotest-playwright" },
 		},
@@ -56,7 +54,6 @@ return {
 					require("neotest-vitest")({ vitestCommand = vitest_command }),
 					require("neotest-python"),
 
-					-- require("neotest-bun"),
 					require("neotest-playwright").adapter({
 						options = {
 							persist_project_selection = true,

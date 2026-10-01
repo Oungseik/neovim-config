@@ -1,29 +1,5 @@
 return {
-	-- { "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
-	-- { "olimorris/onedarkpro.nvim", lazy = false, priority = 1000 },
 	{ "rebelot/kanagawa.nvim", lazy = false },
-	-- { "neanias/everforest-nvim", lazy = false },
-	-- {
-	-- 	"folke/tokyonight.nvim",
-	--    lazy = false,
-	--    priority = 1000,
-	-- 	-- opts = {
-	-- 	-- transparent = true,
-	-- 	-- styles = {
-	-- 	-- 	sidebars = "transparent",
-	-- 	-- 	floats = "transparent",
-	-- 	-- },
-	-- 	-- },
-	-- },
-	-- {
-	-- 	"catppuccin/nvim",
-	-- 	lazy = false,
-	-- 	name = "catppuccin",
-	-- 	priority = 1000,
-	-- 	-- opts = {
-	-- 	-- 	transparent_background = true,
-	-- 	-- },
-	-- },
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		opts = {
@@ -38,14 +14,6 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("nvim-treesitter").setup({
-				modules = {},
-				auto_install = false,
-				highlight = { enable = true },
-				indent = { enable = true },
-				sync_install = false,
-			})
-
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = {
 					"rust",
@@ -83,19 +51,6 @@ return {
 				separator_style = "slant",
 				diagnostics = "nvim_lsp",
 				modified_icon = " ",
-				offsets = {
-					{
-						filetype = "NvimTree",
-						text = "Explorer",
-						highlight = "Directory",
-						separator = true, -- use a "true" to enable the default, or set your own character
-					},
-					{
-						filetype = "sagaoutline",
-						text = "LSP Outline",
-						separator = true, -- use a "true" to enable the default, or set your own character
-					},
-				},
 			},
 		},
 		keys = {
@@ -118,11 +73,6 @@ return {
 				globalstatus = true,
 				theme = "auto",
 
-				disabled_filetypes = {
-					statusline = { "startup", "alpha", "NvimTree", "neo-tree", "sagaoutline" },
-					winbar = { "startup", "alpha", "NvimTree", "neo-tree", "sagaoutline" },
-				},
-
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 			},
@@ -143,13 +93,7 @@ return {
 							-- Get formatters for the current buffer
 							local formatters = conform.list_formatters_for_buffer()
 							if formatters and #formatters > 0 then
-								local formatterNames = {}
-
-								for _, formatter in ipairs(formatters) do
-									table.insert(formatterNames, formatter)
-								end
-
-								return "󰷈 " .. table.concat(formatterNames, " ")
+								return "󰷈 " .. table.concat(formatters, " ")
 							end
 
 							-- Check if there's an LSP formatter
@@ -163,28 +107,7 @@ return {
 							return ""
 						end,
 					},
-					{
-						function()
-							local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
-							if #buf_clients == 0 then
-								return "LSP Inactive"
-							end
-
-							local buf_client_names = {}
-
-							-- add client
-							for _, client in pairs(buf_clients) do
-								if client.name ~= "null-ls" and client.name ~= "copilot" then
-									table.insert(buf_client_names, client.name)
-								end
-							end
-
-							local unique_client_names = table.concat(buf_client_names, ", ")
-							local language_servers = string.format("  %s", unique_client_names)
-
-							return language_servers
-						end,
-					},
+					"lsp_status",
 				},
 				lualine_c = {
 					{
@@ -194,21 +117,7 @@ return {
 					},
 				},
 
-				lualine_x = {
-					{ "navic" },
-					{
-						function()
-							local icon = " "
-							local status = require("copilot.api").status.data
-							return icon .. (status.message or " ")
-						end,
-						cond = function()
-							local ok, clients = pcall(vim.lsp.get_clients, { name = "copilot", bufnr = 0 })
-							return ok and #clients > 0
-						end,
-						color = { fg = "#a6da95" },
-					},
-				},
+				lualine_x = {},
 				lualine_y = {
 					{ "diff", symbols = { added = " ", modified = " ", removed = " " } },
 					{ "branch", icon = "" },

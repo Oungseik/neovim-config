@@ -75,21 +75,6 @@ return {
 		"mrcjkb/haskell-tools.nvim",
 		version = "^9",
 		lazy = false,
-		-- config = function()
-		-- 	vim.g.haskell_tools = {
-		-- 		hls = {
-		-- 			settings = {
-		-- 				haskell = {
-		-- 					plugin = {
-		-- 						hlint = {
-		-- 							globalOn = true,
-		-- 						},
-		-- 					},
-		-- 				},
-		-- 			},
-		-- 		},
-		-- 	}
-		-- end,
 	},
 	{
 		"mrcjkb/rustaceanvim",

@@ -66,4 +66,11 @@ return {
 		},
 		opts_extend = { "sources.default" },
 	},
+	{
+		dir = vim.fn.stdpath("config"),
+		name = "arktype",
+		lazy = false,
+		dependencies = { "saghen/blink.cmp" },
+		opts = {},
+	},
 }

@@ -11,7 +11,7 @@ This configuration transforms Neovim into a full-featured IDE with:
 - **Powerful debugging** with nvim-dap and custom adapters
 - **AI assistant integration** with opencode.nvim
 - **Git workflow** integration (gitsigns, neogit, diffview)
-- **File navigation** with harpoon and snacks.nvim picker
+- **File navigation** with snacks.nvim picker
 
 ## Requirements
 
@@ -54,7 +54,6 @@ nvim
 │       ├── git.lua             # Git integration
 │       ├── testing.lua         # Test runner
 │       ├── formatting.lua      # Code formatting
-│       ├── harpoon.lua         # File marking
 │       ├── snack.lua           # Picker, explorer, dashboard
 │       └── ...                 # More specialized plugins
 └── snippets/                   # Custom snippets
@@ -83,7 +82,6 @@ nvim
 - `<leader>f` - Find files
 - `<leader>sb` - Search buffers
 - `<leader>sg` - Grep search
-- `<leader>m` - Harpoon marks
 
 #### Editing
 - `<leader>/` - Toggle line comments in normal or visual mode (native Neovim)
@@ -136,7 +134,7 @@ nvim
 ### 3. Plugins
 
 **Core:**
-- [catppuccin](https://github.com/catppuccin/nvim) - Color scheme
+- [kanagawa](https://github.com/rebelot/kanagawa.nvim) - Color scheme
 - [snacks.nvim](https://github.com/folke/snacks.nvim) - Picker, explorer, dashboard
 - [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) - Buffer tabs
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - Status line
@@ -150,7 +148,6 @@ nvim
 - [neotest](https://github.com/nvim-neotest/neotest) - Testing
 
 **Productivity:**
-- [harpoon](https://github.com/ThePrimeagen/harpoon) - File marking
 - [opencode.nvim](https://github.com/opencode-ai/opencode) - AI assistant
 - [hurl.nvim](https://github.com/jellydn/hurl.nvim) - HTTP testing
 
