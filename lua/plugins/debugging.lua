@@ -21,7 +21,7 @@ return {
 		dependencies = {
 			"nvim-neotest/nvim-nio",
 			"mfussenegger/nvim-dap-python",
-			{ "theHamsta/nvim-dap-virtual-text", opts = {} },
+			{ "theHamsta/nvim-dap-virtual-text", opts = { virt_text_pos = "eol" } },
 		},
 
 		config = function()
