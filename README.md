@@ -124,6 +124,23 @@ nvim
 - `<leader>ai` - Inline edit
 - `<leader>ae` - Explain code
 
+#### AI Completion
+
+[Minuet](https://github.com/milanglacier/minuet-ai.nvim) provides Codestral FIM
+completions as ghost text alongside blink.cmp. Set `MISTRAL_API_KEY` in your shell
+before launching Neovim. Insert mode uses the bindings from Minuet's
+[virtual text quick start](https://github.com/milanglacier/minuet-ai.nvim#virtual-text-setup):
+
+- `<A-A>` (Alt+Shift+a) - Accept the entire suggestion
+- `<A-a>` (Alt+a) - Accept one line
+- `<A-z>` (Alt+z) - Choose how many lines to accept
+- `<A-[>` / `<A-]>` (Alt+[ / Alt+]) - Previous/next suggestion, or request completion
+- `<A-e>` (Alt+e) - Dismiss the suggestion
+
+AI requests are manual only, including after the first request. Typing, pausing,
+and moving the cursor do not request new AI completions.
+Blink uses its default keybindings; `<C-e>` closes its menu if it hides the ghost text.
+
 #### Markdown
 - `<M-x>` (Alt+x) - Add an unchecked checkbox to a list item, or toggle an existing
   task checkbox between `[ ]` and `[x]`.
