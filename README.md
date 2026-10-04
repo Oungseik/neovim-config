@@ -81,7 +81,8 @@ nvim
 - `<leader>e` - File explorer
 - `<leader>f` - Find files
 - `<leader>sb` - Search buffers
-- `<leader>sg` - Grep search
+- `<leader>sg` - Search Git status
+- `<leader>st` - Search text (grep)
 
 #### Editing
 - `<leader>/` - Toggle line comments in normal or visual mode (native Neovim)
@@ -172,6 +173,10 @@ Blink uses its default keybindings; `<C-e>` closes its menu if it hides the ghos
 **Git:**
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Git signs
 - [neogit](https://github.com/NeogitOrg/neogit) - Git interface
+
+## Tips and Tricks
+
+See [IDE Tips and Tricks](TIPS_AND_TRICKS.md) for search workflows and useful picker syntax.
 
 ## Customization
 
