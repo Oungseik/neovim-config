@@ -57,6 +57,7 @@ return {
 				"svelte",
 				"cssls",
 				"tsc",
+				"oxlint",
 				"prismals",
 				"jsonls",
 				-- "nil_ls",

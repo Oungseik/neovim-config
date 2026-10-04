@@ -2,6 +2,16 @@ return {
 	"milanglacier/minuet-ai.nvim",
 	main = "minuet",
 	event = "InsertEnter",
+	keys = {
+		{
+			"<M-y>",
+			function()
+				require("minuet.virtualtext").action.next()
+			end,
+			mode = "i",
+			desc = "Request AI completion / next suggestion",
+		},
+	},
 	opts = {
 		provider = "codestral",
 		n_completions = 1,

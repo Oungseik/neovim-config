@@ -134,6 +134,7 @@ before launching Neovim. Insert mode uses the bindings from Minuet's
 - `<A-A>` (Alt+Shift+a) - Accept the entire suggestion
 - `<A-a>` (Alt+a) - Accept one line
 - `<A-z>` (Alt+z) - Choose how many lines to accept
+- `<M-y>` (Alt+y) - Request completion, or cycle to the next suggestion
 - `<A-[>` / `<A-]>` (Alt+[ / Alt+]) - Previous/next suggestion, or request completion
 - `<A-e>` (Alt+e) - Dismiss the suggestion
 
