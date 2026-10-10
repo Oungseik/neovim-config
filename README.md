@@ -113,6 +113,20 @@ nvim
 - `<leader>di` - Step into
 - `<leader>do` - Step over
 - `<leader>dt` - Terminate
+- `<leader>du` - Toggle the debugger UI globally: close all managed debugger panes
+  if any tab has them open; otherwise open in the current tab using the sizes and
+  proportions in `lua/debugging/layouts.lua`. Before closing panes in a tab with
+  no editor window, restore the first listed non-DAP buffer in an editor split,
+  or create an empty `[No Name]` buffer if none exists. The active tab is preserved.
+  Partially closed debugger layouts close together on the next toggle.
+  Standalone `:DapToggleRepl` windows stay open and do not count as editor windows
+  when deciding whether to restore an editor.
+- `<leader>dR` - Close debugger panes across tabs and rebuild the complete
+  configured layout in the current tab, repairing missing panes and resized splits.
+
+Starting or attaching a debug session preserves existing pane sizes and does not
+insert editor splits into UI-only tabs. Editor restoration happens only when
+closing the debugger panes.
 
 #### Testing
 - `<leader>tt` - Run test under cursor
