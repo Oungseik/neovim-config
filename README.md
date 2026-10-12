@@ -84,6 +84,9 @@ nvim
 - `<leader>sg` - Search Git status
 - `<leader>st` - Search text (grep)
 
+The file explorer opens as a float and closes when a file is selected or focus
+moves to another window, including when opening a directory from Neogit.
+
 #### Editing
 - `<leader>/` - Toggle line comments in normal or visual mode (native Neovim)
 - `<leader>c` - Close buffer while preserving window layout (Snacks)

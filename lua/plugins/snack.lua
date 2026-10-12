@@ -18,6 +18,7 @@ return {
 			win = { input = { keys = { ["<C-o>"] = { "<C-o>", { "pick_win", "jump" }, mode = { "n", "i" } } } } },
 			sources = {
 				explorer = {
+					auto_close = true,
 					layout = { preset = "vertical", layout = { position = "float" } },
 					win = {
 						list = {
@@ -56,7 +57,6 @@ return {
 			function()
 				Snacks.explorer.open({
 					-- layout = { layout = { position = "right" } },
-					auto_close = true,
 					hidden = true,
 					ignored = true,
 					layout = { preset = "vertical", layout = { position = "float" } },
