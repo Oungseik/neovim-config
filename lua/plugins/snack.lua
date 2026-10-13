@@ -11,6 +11,7 @@ return {
 		dashboard = { enabled = true },
 		explorer = { enabled = true },
 		indent = { enabled = false },
+		image = { enabled = true },
 		input = { enabled = true },
 		terminal = { win = { position = "float", border = "rounded" } },
 		picker = {

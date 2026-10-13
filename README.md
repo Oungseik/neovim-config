@@ -12,12 +12,14 @@ This configuration transforms Neovim into a full-featured IDE with:
 - **AI assistant integration** with opencode.nvim
 - **Git workflow** integration (gitsigns, neogit, diffview)
 - **File navigation** with snacks.nvim picker
+- **Image viewing** with snacks.nvim for directly opened PNG, JPG, WebP, and other supported formats
 
 ## Requirements
 
 - Neovim 0.10+ (uses modern LSP features)
 - Git
 - A [Nerd Font](https://www.nerdfonts.com/) for icons
+- For image viewing: a Kitty graphics protocol-compatible terminal such as Kitty or Ghostty; ImageMagick for formats other than PNG. Use `:checkhealth snacks` to diagnose rendering issues.
 
 ## Installation
 
