@@ -146,9 +146,22 @@ closing the debugger panes.
 
 #### AI Completion
 
-[Minuet](https://github.com/milanglacier/minuet-ai.nvim) provides Codestral FIM
-completions as ghost text alongside blink.cmp. Set `MISTRAL_API_KEY` in your shell
-before launching Neovim. Insert mode uses the bindings from Minuet's
+[Minuet](https://github.com/milanglacier/minuet-ai.nvim) provides AI completions
+as ghost text alongside blink.cmp. Codestral FIM is the default; set
+`MISTRAL_API_KEY` in your shell before launching Neovim. To also use
+[Granite 4.2 8B through OpenRouter](https://openrouter.ai/ibm-granite/granite-4.2-8b),
+set `OPENROUTER_API_KEY` before launching Neovim, then select a configured model:
+
+- `:Minuet change_preset granite` - Use Granite through OpenRouter's chat API,
+  with reasoning disabled for faster completions
+- `:Minuet change_preset codestral` - Use Codestral through Mistral's FIM API
+
+Use Tab after `:Minuet change_preset ` to complete preset names. Selection lasts
+for the current session; restarting Neovim restores Codestral. The built-in
+`:Minuet change_model` picker uses Minuet's model catalog, which may omit newer
+models; use the presets above to switch between these configured models.
+
+Insert mode uses the bindings from Minuet's
 [virtual text quick start](https://github.com/milanglacier/minuet-ai.nvim#virtual-text-setup):
 
 - `<A-A>` (Alt+Shift+a) - Accept the entire suggestion
