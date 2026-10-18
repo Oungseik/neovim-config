@@ -24,9 +24,10 @@ return {
 		},
 		virtualtext = {
 			auto_trigger_ft = {},
+			show_on_completion_menu = true,
 			keymap = {
 				accept = "<A-A>",
-				accept_line = "<A-a>",
+				accept_line = "<Tab>",
 				accept_n_lines = "<A-z>",
 				prev = "<A-[>",
 				next = "<A-]>",
