@@ -8,6 +8,12 @@ return {
 			timeout_ms = 1000,
 
 			formatters = {
+				askama_fmt = {
+					command = "askama_fmt",
+					args = { "--stdin-filepath", "$FILENAME" },
+          stdout = true,
+				},
+
 				biome = {
 					meta = {
 						url = "https://github.com/biomejs/biome",
@@ -50,6 +56,7 @@ return {
 				hurl = { "hurlfmt" },
 
 				html = { "oxfmt", "biome", "prettier", stop_after_first = true },
+				htmldjango = { "askama_fmt", stop_after_first = true },
 				css = { "oxfmt", "biome", "prettier", stop_after_first = true },
 				json = { "oxfmt", "biome", "prettier", stop_after_first = true },
 				jsonc = { "oxfmt", "biome", "prettier", stop_after_first = true },
