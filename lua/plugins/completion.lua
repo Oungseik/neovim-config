@@ -30,7 +30,11 @@ return {
 			-- C-k: Toggle signature help (if signature.enabled = true)
 			--
 			-- See :h blink-cmp-config-keymap for defining your own keymap
-			keymap = { preset = "default" },
+			keymap = {
+				preset = "default",
+				["<C-j>"] = { "select_next", "fallback" },
+				["<C-k>"] = { "select_prev", "show_signature", "hide_signature", "fallback" },
+			},
 
 			signature = { enabled = true },
 

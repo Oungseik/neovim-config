@@ -173,7 +173,9 @@ Insert mode uses the bindings from Minuet's
 
 AI requests are manual only, including after the first request. Typing, pausing,
 and moving the cursor do not request new AI completions.
-Blink uses its default keybindings; AI ghost text remains visible while its menu is open.
+Blink uses its default keybindings, plus `<C-j>` / `<C-k>` to navigate its completion
+menu. With the menu closed, `<C-k>` toggles signature help. AI ghost text remains
+visible while the menu is open.
 
 #### Markdown
 - `<M-x>` (Alt+x) - Add an unchecked checkbox to a list item, or toggle an existing
