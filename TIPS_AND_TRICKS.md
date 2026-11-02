@@ -18,6 +18,18 @@ Snacks supports this workflow out of the box:
    This excludes paths containing `effect` and files ending in `.tsx`.
 5. Press `<C-g>` again to edit the content search while keeping the filename filters.
 
+Pause briefly after typing before pressing `<C-g>`, so Snacks saves the complete input.
+
+### Start with a filename instead
+
+1. Press `<leader>st`, then `<C-g>` before entering a content search.
+2. Type a filename filter, such as `file:.lua$`.
+3. Pause, press `<C-g>` again, and type a content search such as `Snacks`.
+
+The filename filter stays active. No results appear until you enter a content search.
+
+### Filename filters
+
 | Filename filter | Meaning |
 |-----------------|---------|
 | `file:src/` | Fuzzy-match paths against `src/` |
@@ -27,16 +39,41 @@ Snacks supports this workflow out of the box:
 | `file:!.tsx$` | Exclude files ending in `.tsx` |
 | `file:!effect file:!.tsx$` | Apply both exclusions |
 
+### Match either filename with OR
+
+Use `|` with spaces on both sides to match either alternative:
+
+```text
+file:.lua$ | file:.md$
+```
+
+This keeps results from either `.lua` or `.md` files. Repeat `file:` for each
+alternative. Other space-separated filters still apply to both alternatives:
+
+```text
+file:.lua$ | file:.md$ file:!test
+```
+
+This keeps `.lua` or `.md` files but excludes paths containing `test`.
+To fuzzy-match either term in the result text instead, use `foo | bar`.
+
+### Search and filter syntax
+
 The two modes use different syntax:
 
 - **Live grep:** ripgrep's [Rust regex syntax](https://docs.rs/regex/latest/regex/#syntax).
-  `<A-r>` toggles regex versus literal search. There is no `regex:` prefix.
+  For example, `foo|bar` searches for either expression. `<A-r>` toggles regex
+  versus literal search. There is no `regex:` prefix.
 - **Result filtering:** Snacks' fzf-style matching with field prefixes such as
   `file:`. Here, `!` means exclusion and `$` means an exact suffix; `.tsx` is
-  literal, so the dot does not need escaping.
+  literal, so the dot does not need escaping. A filter such as `text:'picker`
+  matches the result text, including its path and matching line; it does not
+  start a new content search.
 
-Filename filters hide results after grep has searched the files. To prevent
-searching a submodule at all, add a ripgrep glob exclusion in the live grep input:
+Filename filters hide results after grep has searched the files. Live grep is
+limited to 10,000 results by default, so filtering a broad search may miss later
+matches. To prevent searching a submodule at all, add a ripgrep glob exclusion
+in the live grep input:
 
 ```text
 foo.*bar -- -g !path/to/submodule/**
