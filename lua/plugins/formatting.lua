@@ -11,7 +11,7 @@ return {
 				askama_fmt = {
 					command = "askama_fmt",
 					args = { "--stdin-filepath", "$FILENAME" },
-          stdout = true,
+					stdout = true,
 				},
 
 				biome = {
@@ -44,6 +44,10 @@ return {
 					stdin = true,
 					stdout = true,
 				},
+
+				sqruff = {
+					prepend_args = { "--parsing-errors" },
+				},
 			},
 
 			formatters_by_ft = {
@@ -70,7 +74,7 @@ return {
 				prisma = { "prisma", lsp_format = true, stop_after_first = true },
 
 				scheme = { "scheme" },
-				sql = { "sleek" },
+				sql = { "sqruff", stop_after_first = true },
 				php = { "php_cs_fixer", stop_after_first = true },
 				haskell = { "fourmolu", lsp_format = "fallback", stop_after_first = true },
 				-- kdl = { "kdlfmt", lsp_format = "fallback", stop_after_first = true },
