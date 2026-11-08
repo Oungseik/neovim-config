@@ -1,4 +1,82 @@
 return {
+	{
+		"olimorris/codecompanion.nvim",
+		version = "v19.27.0",
+		cmd = "CodeCompanionChat",
+		keys = {
+			{ "<leader>a", "<Nop>", desc = "AI" },
+			{ "<leader>at", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle AI chat" },
+			{ "<leader>an", "<cmd>CodeCompanionChat<cr>", desc = "New AI chat" },
+			{ "<leader>as", "<cmd>CodeCompanionChat Add<cr>", desc = "Ask about selection", mode = "x" },
+		},
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
+		opts = {
+			adapters = {
+				acp = {
+					opencode = function()
+						local permissions =
+							[[{"edit":"deny","bash":"ask","*_*":"ask","read":{"*.env":"ask","*.env.*":"ask","*.env.example":"allow"},"task":{"*":"deny","general":"allow","explore":"allow"}}]]
+						local prompt = [[You are a programming mentor and code reviewer. The user writes their own code.
+Investigate relevant project files, dependency versions, and official documentation when useful.
+Explain reasoning, trade-offs, and findings with file paths or source links. Give actionable feedback and test ideas.
+Prefer guiding questions and incremental hints; provide a complete example only when the user asks for one.
+Do not modify project files. Ask before running commands.]]
+						return require("codecompanion.adapters").extend("opencode", {
+							env = {
+								OPENCODE_ENABLE_EXA = function()
+									return "1"
+								end,
+								OPENCODE_PERMISSION = function()
+									return permissions
+								end,
+								OPENCODE_CONFIG_CONTENT = function()
+									return ([[{"default_agent":"mentor","agent":{
+										"mentor":{"mode":"primary","description":"Programming mentor and reviewer","prompt":%s,"permission":%s},
+										"build":{"permission":%s},"plan":{"permission":%s},
+										"general":{"permission":%s},"explore":{"permission":%s}
+									}}]]):format(
+										vim.json.encode(prompt),
+										permissions,
+										permissions,
+										permissions,
+										permissions,
+										permissions
+									)
+								end,
+							},
+						})
+					end,
+				},
+			},
+			interactions = {
+				chat = {
+					adapter = "opencode",
+					tools = { opts = { approval_mode = "ask" } },
+					slash_commands = { resume = { keymaps = { modes = { n = "gh" } } } },
+				},
+			},
+			display = {
+				chat = {
+					start_in_insert_mode = true,
+					window = { layout = "vertical", position = "right", width = 0.5 },
+				},
+			},
+		},
+	},
+	{
+		dir = vim.fn.stdpath("config"),
+		name = "ai_history",
+		dependencies = { "olimorris/codecompanion.nvim" },
+		keys = {
+			{
+				"<leader>ah",
+				function()
+					require("ai_history").open()
+				end,
+				desc = "AI chat history",
+			},
+		},
+	},
 	-- {
 	-- 	"olimorris/codecompanion.nvim",
 	-- 	version = "v19.23.0",

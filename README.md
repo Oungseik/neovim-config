@@ -9,7 +9,7 @@ This configuration transforms Neovim into a full-featured IDE with:
 - **LSP support** for 15+ languages (Rust, Go, TypeScript, Python, PHP, etc.)
 - **Intelligent completion** with blink.cmp (Rust-based engine)
 - **Powerful debugging** with nvim-dap and custom adapters
-- **AI assistant integration** with opencode.nvim
+- **AI mentoring and review** with CodeCompanion and OpenCode
 - **Git workflow** integration (gitsigns, neogit, diffview)
 - **File navigation** with snacks.nvim picker
 - **Image viewing** with snacks.nvim for directly opened PNG, JPG, WebP, and other supported formats
@@ -140,9 +140,28 @@ closing the debugger panes.
 - `<leader>td` - Debug test
 
 #### AI Assistant
-- `<leader>ac` - Open chat
-- `<leader>ai` - Inline edit
-- `<leader>ae` - Explain code
+
+[CodeCompanion](https://github.com/olimorris/codecompanion.nvim) opens OpenCode
+as a programming mentor in a Neovim chat. Install OpenCode and connect the
+model provider you want to use; CodeCompanion uses OpenCode's existing account
+and model settings. Open Neovim from the project root so the agent can inspect
+the relevant files and dependencies.
+
+- `<leader>ac` - Toggle the last AI chat
+- `<leader>an` - Start a new AI chat
+- `<leader>ah` - Pick an existing OpenCode session, then open its chat; cancelling creates no session
+- `<leader>as` in visual mode - Add the selection to the current chat
+- `<C-s>` in the chat - Send your question
+- `ga` in the chat's normal mode - Select the OpenCode adapter and change the model
+- `gh` in a new chat's normal mode, before sending a message - Resume an OpenCode session
+
+The mentor explains and reviews your code and can search the web. It cannot use
+OpenCode's file-editing tools; shell commands and MCP tools ask for approval.
+Only the `general` and `explore` subagents are available from this chat, with
+the same edit and command restrictions. These permissions apply to OpenCode
+started by CodeCompanion and do not change standalone OpenCode settings.
+Shell commands and MCP tools can still write files if you approve them. Save
+other modified files before asking the agent to read them from disk.
 
 #### AI Completion
 
@@ -201,7 +220,7 @@ visible while the menu is open.
 - [neotest](https://github.com/nvim-neotest/neotest) - Testing
 
 **Productivity:**
-- [opencode.nvim](https://github.com/opencode-ai/opencode) - AI assistant
+- [CodeCompanion.nvim](https://github.com/olimorris/codecompanion.nvim) and [OpenCode](https://opencode.ai/) - AI mentoring and code review
 - [hurl.nvim](https://github.com/jellydn/hurl.nvim) - HTTP testing
 
 **Git:**
