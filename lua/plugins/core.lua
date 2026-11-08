@@ -25,6 +25,7 @@ return {
 					"typescriptreact",
 					"javascriptreact",
 					"svelte",
+					"astro",
 					"html",
 					"css",
 					"go",
