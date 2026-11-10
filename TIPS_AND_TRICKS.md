@@ -62,7 +62,7 @@ To fuzzy-match either term in the result text instead, use `foo | bar`.
 The two modes use different syntax:
 
 - **Live grep:** ripgrep's [Rust regex syntax](https://docs.rs/regex/latest/regex/#syntax).
-  For example, `foo|bar` searches for either expression. `<A-r>` toggles regex
+  For example, `foo|bar` searches for either expression. `<M-r>` toggles regex
   versus literal search. There is no `regex:` prefix.
 - **Result filtering:** Snacks' fzf-style matching with field prefixes such as
   `file:`. Here, `!` means exclusion and `$` means an exact suffix; `.tsx` is

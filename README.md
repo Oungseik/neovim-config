@@ -180,21 +180,40 @@ for the current session; restarting Neovim restores Codestral. The built-in
 `:Minuet change_model` picker uses Minuet's model catalog, which may omit newer
 models; use the presets above to switch between these configured models.
 
-Insert mode uses the bindings from Minuet's
-[virtual text quick start](https://github.com/milanglacier/minuet-ai.nvim#virtual-text-setup):
+Insert mode uses these Minuet bindings (`M` is Meta, usually Alt):
 
-- `<A-A>` (Alt+Shift+a) - Accept the entire suggestion
-- `<A-a>` (Alt+a) - Accept one line
-- `<A-z>` (Alt+z) - Choose how many lines to accept
+- `<M-a>` (Alt+a) - Accept the entire suggestion
+- `<M-Tab>` (Alt+Tab) - Request a suggestion, or accept one line if one is visible
+- `<M-l>` (Alt+l) - Accept one line
+- `<M-z>` (Alt+z) - Choose how many lines to accept
 - `<M-y>` (Alt+y) - Request completion, or cycle to the next suggestion
-- `<A-[>` / `<A-]>` (Alt+[ / Alt+]) - Previous/next suggestion, or request completion
-- `<A-e>` (Alt+e) - Dismiss the suggestion
+- `<M-[>` / `<M-]>` (Alt+[ / Alt+]) - Cycle suggestions, or request completion
+  when none is visible
+- `<M-e>` (Alt+e) - Dismiss the suggestion
 
-AI requests are manual only, including after the first request. Typing, pausing,
-and moving the cursor do not request new AI completions.
+Minuet asks for one suggestion per request. Codestral makes one API request;
+Granite may occasionally return multiple suggestions. Dismiss a suggestion
+before requesting a different one. AI requests are
+manual only, including after the first request. Typing, pausing, and moving the
+cursor do not request new AI completions. Holding Alt alone cannot trigger a
+request through Neovim's terminal input. If Alt+Tab is intercepted by the
+desktop or terminal, use Alt+y to request and Alt+l to accept one line. Pressing
+Alt+Tab again while a request is pending starts a new request. A pending result
+may appear after moving the cursor or changing buffers, or after dismissing
+while waiting.
 Blink uses its default keybindings, plus `<C-j>` / `<C-k>` to navigate its completion
 menu. With the menu closed, `<C-k>` toggles signature help. AI ghost text remains
 visible while the menu is open.
+
+Minuet sends the current buffer's surrounding text to the selected provider,
+including nearby comments, but does not include LSP symbols or other files.
+For future project-aware completion, evaluate [VectorCode](https://github.com/Davidyz/VectorCode)
+and Minuet's [retrieval recipes](https://github.com/milanglacier/minuet-ai.nvim/blob/main/recipes.md#integration-with-vectorcode);
+the FIM template must match the selected model. Another model to compare is
+[DeepSeek FIM](https://api-docs.deepseek.com/guides/fim_completion/), using
+`deepseek-flash` with Minuet's `openai_fim_compatible` provider, the
+`https://api.deepseek.com/beta/completions` endpoint, and `DEEPSEEK_API_KEY`.
+Neither integration is configured yet.
 
 #### Markdown
 - `<M-x>` (Alt+x) - Add an unchecked checkbox to a list item, or toggle an existing

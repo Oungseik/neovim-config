@@ -17,10 +17,10 @@ vim.api.nvim_set_keymap(
 )
 
 -- swapping lines
-vim.api.nvim_set_keymap("n", "<A-j>", ":m .+1<cr>==", {})
-vim.api.nvim_set_keymap("n", "<A-k>", ":m .-2<cr>==", {})
-vim.api.nvim_set_keymap("v", "<A-j>", ":m '>+1<cr>gv=gv", {})
-vim.api.nvim_set_keymap("v", "<A-k>", ":m '<-2<cr>gv=gv", {})
+vim.api.nvim_set_keymap("n", "<M-j>", ":m .+1<cr>==", {})
+vim.api.nvim_set_keymap("n", "<M-k>", ":m .-2<cr>==", {})
+vim.api.nvim_set_keymap("v", "<M-j>", ":m '>+1<cr>gv=gv", {})
+vim.api.nvim_set_keymap("v", "<M-k>", ":m '<-2<cr>gv=gv", {})
 
 -- select and indent
 vim.api.nvim_set_keymap("v", ">", ">gv", {})
