@@ -49,7 +49,17 @@ return {
 		event = "BufEnter",
 		config = true,
 		keys = {
-			{ "<leader>ga", ":!git add %<cr><cr>", desc = "Git add the buffer", silent = true },
+			{
+				"<leader>ga",
+				function()
+					local result =
+						vim.system({ "git", "--literal-pathspecs", "add", "--", vim.api.nvim_buf_get_name(0) }):wait()
+					if result.code ~= 0 then
+						vim.notify(vim.trim(result.stderr), vim.log.levels.ERROR)
+					end
+				end,
+				desc = "Git add the buffer",
+			},
 			{ "<leader>gn", ":GitConflictNextConflict<cr>", desc = "Next Conflict", silent = true },
 			{ "<leader>gp", ":GitConflictPrevConflict<cr>", desc = "Prev Conflict", silent = true },
 			{ "<leader>gq", ":GitConflictListQf<cr>", desc = "Conflicts Quickfix", silent = true },
