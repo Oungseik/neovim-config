@@ -1,16 +1,30 @@
 return {
 	{
 		"olimorris/codecompanion.nvim",
-		version = "v19.27.0",
-		cmd = "CodeCompanionChat",
+		version = "*",
+		cmd = { "CodeCompanion", "CodeCompanionChat" },
 		keys = {
 			{ "<leader>a", "<Nop>", desc = "AI" },
 			{ "<leader>at", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle AI chat" },
 			{ "<leader>an", "<cmd>CodeCompanionChat<cr>", desc = "New AI chat" },
 			{ "<leader>as", "<cmd>CodeCompanionChat Add<cr>", desc = "Ask about selection", mode = "x" },
+			{ "<leader>ae", ":CodeCompanion /edit<cr>", desc = "Edit selection with AI", mode = "x" },
 		},
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
 		opts = {
+			prompt_library = {
+				["Edit selection"] = {
+					interaction = "inline",
+					opts = {
+						alias = "edit",
+						adapter = { name = "mistral" },
+						modes = { "v" },
+						placement = "replace",
+						user_prompt = true,
+					},
+					prompts = {},
+				},
+			},
 			interactions = {
 				chat = {
 					adapter = "opencode",

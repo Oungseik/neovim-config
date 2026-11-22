@@ -74,12 +74,12 @@ return {
 	},
 	{
 		"mrcjkb/haskell-tools.nvim",
-		version = "^9",
+		version = "^11",
 		lazy = false,
 	},
 	{
 		"mrcjkb/rustaceanvim",
-		version = "9.0.1",
+		version = "9.2.2",
 		lazy = false, -- this plugin is already lazy
 	},
 	{

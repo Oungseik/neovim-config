@@ -151,12 +151,13 @@ so the agent can inspect the relevant files and dependencies.
 - `<leader>an` - Start a new AI chat
 - `<leader>ah` - Pick an existing OpenCode session, then open its chat; cancelling creates no session
 - `<leader>as` in visual mode - Add the selection to the current chat
+- `<leader>ae` in visual mode - Type an instruction to rewrite the selection in place.
+  This uses Mistral with `MISTRAL_API_KEY`. Review the diff, then press `g2` to accept or `g3` to reject.
 - `<C-s>` in the chat - Send your question
 - `ga` in the chat's normal mode - Select the OpenCode adapter and change the model
 - `gh` in a new chat's normal mode, before sending a message - Resume an OpenCode session
 
-This configuration adds no custom prompts or permission overrides; tool access
-and approvals follow the defaults and your OpenCode configuration. Save other
+Chat tool access and approvals follow the defaults and your OpenCode configuration. Save other
 modified files before asking the agent to read them from disk.
 
 #### AI Completion
