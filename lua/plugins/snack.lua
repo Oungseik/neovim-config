@@ -138,21 +138,6 @@ return {
 			mode = "n",
 		},
 		{
-			"<leader>lo",
-			function()
-				Snacks.picker.lsp_symbols({
-					focus = "list",
-					layout = {
-						preset = "sidebar",
-						preview = false,
-						layout = { position = "right" },
-					},
-				})
-			end,
-			desc = "Search Buffer Symbols",
-			mode = "n",
-		},
-		{
 			"<leader>lR",
 			function()
 				Snacks.picker.lsp_references()
