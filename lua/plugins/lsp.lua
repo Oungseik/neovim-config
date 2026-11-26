@@ -1,6 +1,12 @@
 return {
 	{ "j-hui/fidget.nvim", opts = {} },
 	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy",
+		priority = 1000,
+		opts = {},
+	},
+	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			vim.lsp.config.lua_ls = {

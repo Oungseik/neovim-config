@@ -44,6 +44,7 @@ vim.opt.undodir = vim.fn.expand("~/.local/share/nvim/undo")
 vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>")
 
 vim.diagnostic.config({
+	virtual_text = false,
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = "",
