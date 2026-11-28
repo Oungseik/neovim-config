@@ -89,23 +89,15 @@ return {
 								return "Conform not installed"
 							end
 
-							local lsp_format = require("conform.lsp_format")
-
-							-- Get formatters for the current buffer
-							local formatters = conform.list_formatters_for_buffer()
-							if formatters and #formatters > 0 then
-								return "󰷈 " .. table.concat(formatters, " ")
+							local formatters, uses_lsp = conform.list_formatters_to_run()
+							local names = {}
+							for _, formatter in ipairs(formatters) do
+								table.insert(names, formatter.name)
 							end
-
-							-- Check if there's an LSP formatter
-							local bufnr = vim.api.nvim_get_current_buf()
-							local lsp_clients = lsp_format.get_format_clients({ bufnr = bufnr })
-
-							if not vim.tbl_isempty(lsp_clients) then
-								return "󰷈 LSP Formatter"
+							if uses_lsp then
+								table.insert(names, "LSP Formatter")
 							end
-
-							return ""
+							return #names > 0 and "󰷈 " .. table.concat(names, " ") or ""
 						end,
 					},
 					"lsp_status",
@@ -118,7 +110,20 @@ return {
 					},
 				},
 
-				lualine_x = {},
+				lualine_x = {
+					{
+						function()
+							if not package.loaded["minuet"] then
+								return ""
+							end
+							if #require("minuet.backends.common").current_jobs > 0 then
+								return "󰲸 "
+							end
+							return " "
+						end,
+						color = { fg = "#7FB4CA" },
+					},
+				},
 				lualine_y = {
 					{ "diff", symbols = { added = " ", modified = " ", removed = " " } },
 					{ "branch", icon = "" },
